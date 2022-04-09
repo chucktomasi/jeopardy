@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Game Card" max_length="40" name="x_orb_jeopardy_m2m_game_card" sizeclass="340" type="collection">
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Answered by" max_length="32" name="answered_by" reference="x_orb_jeopardy_player" type="reference"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Card" max_length="32" name="card" reference="x_orb_jeopardy_card" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,no_truncate=true" label="Card" max_length="32" name="card" reference="x_orb_jeopardy_card" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Daily double" max_length="40" name="daily_double" type="boolean"/>
         <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Game" max_length="32" name="game" reference="x_orb_jeopardy_game" reference_cascade_rule="delete" type="reference"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="queued" label="State" max_length="40" name="state" type="choice">

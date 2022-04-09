@@ -7,14 +7,12 @@
         <element attributes="edge_encryption_enabled=true" label="Game" max_length="32" name="game" reference="x_orb_jeopardy_game" reference_cascade_rule="delete" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Order" max_length="40" name="order" type="integer"/>
         <element attributes="edge_encryption_enabled=true" display="true" label="Player" max_length="32" name="player" reference="x_orb_jeopardy_player" type="reference"/>
-        <element label="Short link" max_length="1024" name="short_link" type="url"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="primary" label="State" max_length="40" name="state" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Primary" sequence="0" value="primary"/>
                 <element inactive_on_update="false" label="Backup" sequence="1" value="backup"/>
             </choice>
         </element>
-        <element label="URL" max_length="1024" name="url" type="url"/>
         <element attributes="edge_encryption_enabled=true" label="Winner" max_length="40" name="winner" type="boolean"/>
         <index name="index">
             <element name="game"/>
