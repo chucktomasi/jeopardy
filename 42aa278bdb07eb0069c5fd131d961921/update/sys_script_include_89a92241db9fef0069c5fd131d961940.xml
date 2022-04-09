@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_orb_jeopardy.Util</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Util</name>
+        <script><![CDATA[var Util = Class.create();
+
+Util.prototype = {
+	/*
+	 * accepts a GlideRecord(GAME_TABLE) or sys_id of game record
+	 *
+	 */
+	initialize: function(game) {
+
+		if (game instanceof GlideRecord) {
+			this.gameGr = game;
+			this.gameID = game.getUniqueValue();
+		} else {
+			var gr = new GlideRecord(Constants.GAME_TABLE);
+			gr.get(game);
+			this.gameGr = gr;
+			this.gameID = game;
+		}
+
+		this.defaultGameState = 'pending';
+		this.defaultCardState = 'queued';
+	},
+
+	/*
+	 * get a list of card objects for this game by category
+	 *
+	 * @param - none
+	 * @return - array of card objects
+	 *
+	 */
+	getCardList : function() {
+
+		var list = [];
+		var catList = this.getGameCategories();
+
+		for (var i = 0; i < catList.length; i++) {
+			var category = catList[i];
+			var catObjList = [];
+			var catObj = {};
+
+			catObj.id          = category.id;
+			catObj.name        = category.name;
+			catObj.description = category.description;
+			catObj.order       = category.order;
+			catObj.cardList    = [];
+
+			var cardGr   = new GlideRecord(Constants.GAME_CARD_M2M);
+
+			cardGr.addQuery('card.category', category.id);
+			cardGr.addQuery('game', this.gameID);
+			cardGr.orderBy('card.difficulty');
+			cardGr.setLimit(this.gameGr.n_rows);
+			cardGr.query();
+
+			while (cardGr.next()) {
+				var cardObj = this.makeCardObj(cardGr);
+
+				catObj.cardList.push(cardObj);
+			}
+
+			list.push(catObj);
+		}
+
+		return list;
+
+	},
+
+	/*
+	 * Transpose the cards for easier display on the board by row
+	 *
+	 * @param - array of card objects
+	 * @return - array of card objects with row/column transposed
+	 *
+	 */
+	transposeBoard : function(list) {
+
+		var newBoard = [];
+
+		for (var row = 0; row < this.gameGr.n_rows; row++) {
+			var rowList = [];
+			for (var col = 0; col < list.length; col++) {
+				var cardObj = list[col].cardList[row];
+				rowList.push(cardObj);
+			}
+			newBoard.push(rowList);
+		}
+
+		return newBoard;
+	},
+
+	/*
+	 * create a player URL for final Jeopardy
+	 *
+	 * @param - Game/Player m2m GlideRecord
+	 * @return - URL
+	 *
+	 */
+	makeGamePlayerURL : function(gamePlayerGr) {
+
+		var gameID = gamePlayerGr.getValue('game');
+		var playerOrder = gamePlayerGr.getValue('order');
+
+		var url = Constants.INSTANCE_URL +
+			'/jeopardy?id=jeopardy_final_player&sysparm_game=' + gameID +
+			'&sysparm_player=' + playerOrder;
+
+		return url;
+
+	},
+
+	/*
+	 * get a list of games in final jeopardy state
+	 *
+	 * @param - none
+	 * @returns - array of objects
+	 *
+	 */
+
+	getFinalJeopardyGames : function() {
+
+		var list = [];
+		var gameGr = new GlideRecord(Constants.GAME_TABLE);
+		gameGr.addQuery('state', 'final_jeopardy');
+		gameGr.query();
+
+		while (gameGr.next()) {
+
+			obj = {};
+			obj.name = gameGr.getDisplayValue();
+			obj.date = gameGr.date.getDisplayValue();
+			obj.id   = gameGr.getUniqueValue();
+			obj.show = false;
+
+			var players = this.getPlayers(obj.id);
+
+			obj.players = players;
+
+			list.push(obj);
+		}
+		
+		return list;
+		
+	},
+
+	/*
+	 * calculate the card amount based on the game type
+	 *
+	 * @param - integer of card difficulty
+	 * @return - dollar value of the question
+	 *
+	 */
+	cardAmount : function(difficulty) {
+
+		var valueFactor = 100;
+		if (this.gameGr.getValue('type') == 'double jeopardy') {
+			valueFactor = 200;
+		}
+
+		return difficulty * valueFactor;
+
+	},
+
+	/*
+	 * get the categories related to this game
+	 *
+	 * @param none
+	 * @return array of objects
+	 *
+	 */
+	getGameCategories : function() {
+
+		var list = [];
+		var m2m = new GlideRecord(Constants.GAME_CATEGORY_M2M);
+		m2m.addQuery('game', this.gameID);
+		m2m.setLimit(6);
+		m2m.orderBy('order');
+		m2m.query();
+
+		while (m2m.next()) {
+			var obj = {};
+			catGr           = m2m.category.getRefRecord();
+			obj.name        = catGr.getDisplayValue();
+			obj.description = catGr.getValue('description');
+			obj.id          = m2m.getValue('category');
+			obj.order       = m2m.getValue('order');
+			list.push(obj);
+		}
+
+		return list;
+	},
+
+	/*
+	 * verify this game has all the necessary components to play
+	 *
+	 * @param none
+	 * @return boolean (true=game validated)
+	 *
+	 */
+	verifyGame : function() {
+
+		return this.hasCorrectNumberOfCategories() &&
+			this.checkPlayers() &&
+			this.checkFinalJeopardy() &&
+			this.checkCatOrder() &&
+			this.checkCards();
+
+	},
+
+	/*
+	 * check if there are six categories found on this game
+	 *
+	 * @param none
+	 * @return boolean (true=six categories found)
+	 *
+	 */
+	hasCorrectNumberOfCategories : function() {
+
+		var ga = new GlideAggregate(Constants.GAME_CATEGORY_M2M);
+
+		ga.addAggregate('COUNT');
+		ga.addQuery('game', this.gameID);
+		ga.query();
+
+		if (ga.next()) {
+			var count = parseInt(ga.getAggregate('COUNT'), 10);
+			var properNumber = parseInt(this.gameGr.getValue('n_categories'), 10);
+			if (count == properNumber) {
+				return true;
+			}
+		}
+
+		return false;
+
+	},
+
+	/*
+	 * check if there are the right number of cards, categories, rows, and 1 of each difficult
+	 * and at least one daily double
+	 *
+	 * @param none
+	 * @return boolean (true=all cards conditions met)
+	 *
+	 */
+	checkCards : function() {
+
+		return this.checkCatDifficulty() &&
+			this.checkProperNumberOfCardsPerCategory() &&
+			this.checkTotalNumberOfCards() &&
+			this.checkDailyDouble();
+
+	},
+
+	/*
+	 * Check if there is a daily double card in this game
+	 *
+	 * @param none
+	 * @return boolean (true=Daily Double found)
+	 *
+	 */
+	checkDailyDouble : function() {
+
+		var count = -1;
+		var cardM2M = new GlideAggregate(Constants.GAME_CARD_M2M);
+		cardM2M.addAggregate('COUNT');
+		cardM2M.addQuery('daily_double', true);
+		cardM2M.addQuery('game', this.gameID);
+		cardM2M.query();
+
+		if (cardM2M.next()) {
+			count = parseInt(cardM2M.getAggregate('COUNT'), 10);
+		}
+
+		if (count == 2)
+			return true;
+
+		return false;
+	},
+
+	/*
+	 * Ensure that each category has cards of difficulty 1-5
+	 *
+	 * @param none
+	 * @return boolean (true=everything ood)
+	 *
+	 */
+	checkCatDifficulty : function() {
+
+		var list = this.getCardList();
+
+		if (list.length == 0) {
+			return false;
+		}
+
+		for (var iCat = 0; iCat < list.length; iCat++) {
+			cat = list[iCat];
+			for (var iCard = 0; iCard < cat.cardList.length; iCard++) {
+				var card = cat.cardList[iCard];
+				if (card.difficulty != iCard + 1)
+					return false;
+			}
+		}
+
+		return true;
+	},
+
+	/*
+	 * Ensure the categories are in order
+	 *
+	 * @param
+	 * @return
+	 *
+	 */
+	checkCatOrder : function() {
+
+		var list = this.getGameCategories();
+
+		if (list.length == 0) {
+			return false;
+		}
+
+		for (var i = 0; i < list.length; i++) {
+			cat = list[i];
+			if (cat.order != i + 1) {
+				return false;
+			}
+		}
+
+		return true;
+
+	},
+
+	/*
+	 * Ensure each category has five cards
+	 *
+	 * @param none
+	 * @return boolean (true=five cards per category)
+	 *
+	 */
+	checkProperNumberOfCardsPerCategory : function() {
+
+		var list = this.getCardList();
+
+		if (list.length == 0) {
+			return false;
+		}
+
+		for (var i = 0; i < list.length; i++) {
+			var cat = list[i];
+			if (cat.cardList.length != this.gameGr.n_rows) {
+				return false;
+			}
+		}
+
+		return true;
+	},
+
+	/*
+	 * Ensure there are 30 cards in this game
+	 *
+	 * @param none
+	 * @return boolean (true=30 cards found)
+	 *
+	 */
+	checkTotalNumberOfCards : function() {
+
+		var ga = new GlideAggregate(Constants.GAME_CARD_M2M);
+		ga.addAggregate('COUNT');
+		ga.addQuery('game', this.gameID);
+		ga.query();
+
+		if (ga.next()) {
+			var count = parseInt(ga.getAggregate('COUNT'), 10);
+			var properTotal = this.gameGr.n_rows * this.gameGr.n_categories;
+			if (count == properTotal) {
+				return true;
+			}
+		}
+
+		return false;
+
+	},
+
+	/*
+	 * check if this game has a final jeopardy question defined
+	 *
+	 * @param none
+	 * @return boolean (true=question defined)
+	 *
+	 */
+	checkFinalJeopardy : function() {
+
+		var fjId = this.gameGr.getValue('final_jeopardy');
+
+		if (fjId) {
+			return true;
+		}
+
+		return false;
+	},
+
+	/*
+	 * get the card info related to the game/card M2M id
+	 *
+	 * @param sys_id of m2m-game-card
+	 * @return object
+	 *
+	 */
+	getCard : function(m2mID) {
+
+		var cardM2M = new GlideRecord(Constants.GAME_CARD_M2M);
+		cardM2M.get(m2mID);
+
+		return this.makeCardObj(cardM2M);
+
+	},
+
+	/*
+	 * make a card object based on m2m-game-card record info
+	 *
+	 * @param GlideRecord(GAME_CARD_M2M)
+	 * @return object with card details
+	 *
+	 */
+	makeCardObj : function(m2mGr) {
+
+		var cardObj = {};
+		var cardGr = m2mGr.card.getRefRecord();
+
+		cardObj.id = cardGr.getUniqueValue();
+		cardObj.m2m_id = m2mGr.getUniqueValue();
+		cardObj.answer = cardGr.getValue('answer');
+		var difficulty = parseInt(cardGr.getValue('difficulty'), 10);
+		cardObj.amount = this.cardAmount(difficulty);
+		cardObj.daily_double = (m2mGr.getValue('daily_double') == 1);
+		cardObj.state = m2mGr.getValue('state');
+		cardObj.question = cardGr.getValue('question');
+		cardObj.attachment = this._getCardAttachment(cardGr);
+		cardObj.difficulty = parseInt(cardGr.getValue('difficulty'), 10);
+
+		return cardObj;
+	},
+
+	/*
+	 * get the final jeopardy card info from the reference field
+	 *
+	 * @param none
+	 * @return object
+	 *
+	 */
+	getFinalCard : function() {
+
+		var cardGr = this.gameGr.final_jeopardy.getRefRecord();
+
+		return this.makeFinalCardObj(cardGr);
+
+	},
+
+	/*
+	 * reference qualifier for finl jeopardy questions
+	 * -- cannot be a question currently on the board
+	 *
+	 * @param - none
+	 * @return encoded query string
+	 *
+	 */
+	finalJeopardyRefQual : function() {
+
+		// game=ba4eda6d1bf2a0102e4d4156bc4bcbd0^
+		// difficultyNOT IN2,4
+		var list = [];
+		var m2m = new GlideRecord(Constants.GAME_CARD_M2M);
+		m2m.addQuery('game', this.gameID);
+		m2m.query();
+
+		while (m2m.next()) {
+			list.push(m2m.getValue('card'));
+		}
+
+		return 'sys_idNOT IN' + list.join(',');
+
+	},
+
+	/*
+	 * create the object for the final jeopardy question
+	 *
+	 * @param GlideRecord(CARD_TABLE)
+	 * @return object
+	 *
+	 */
+	makeFinalCardObj : function(cardGr) {
+
+		var cardObj = {};
+
+		cardObj.id = cardGr.getUniqueValue();
+		cardObj.answer = cardGr.getValue('answer');
+		var difficulty = parseInt(cardGr.getValue('difficulty'), 10);
+		cardObj.amount = this.cardAmount(difficulty);
+		cardObj.question = cardGr.getValue('question');
+		cardObj.attachment = this._getCardAttachment(cardGr);
+
+		return cardObj;
+	},
+
+	/*
+	 * get the attachment properties
+	 *
+	 * @param GlideRecord(CARD_TABLE)
+	 * @return object - {
+	 *             "name" : "file name",
+	 *             "type" : "MIME type"
+	 * .      }
+	 *
+	 */
+	_getCardAttachment : function(cardGr) {
+
+		var attGr = new GlideRecord(Constants.ATTACHMENT_TABLE);
+		var obj = {
+			"name" : "",
+			"type" : ""
+		};
+
+		attGr.addQuery('table_name', Constants.CARD_TABLE);
+		attGr.addQuery('table_sys_id', cardGr.getUniqueValue());
+		attGr.query();
+
+		if (attGr.next()) {
+			obj.name = attGr.getUniqueValue() + '.iix';
+			var content_type = attGr.getValue('content_type');
+			// gs.info('getCardAttachment() content_type=' + content_type);
+			if (content_type.indexOf("image") >= 0) {
+				obj.type = "image";
+			}
+			if (content_type.indexOf("audio") >= 0) {
+				obj.type = "audio";
+			}
+		}
+
+		// gs.info('getCardAttachment(): obj=' + JSON.stringify(obj, null, 4));
+		return obj;
+	},
+
+	/*
+	 * update the m2m_game_card record with the player who answered it
+	 *
+	 * @param sys_id of GAME_CARD_M2M, sys_id of PLAYER_TABLE
+	 * @return none
+	 *
+	 */
+	setAnsweredBy : function(m2mID, playerID) {
+
+		var cardGr = new GlideRecord(Constants.GAME_CARD_M2M);
+
+		if (cardGr.get(m2mID)) {
+			cardGr.setValue('answered_by', playerID);
+			cardGr.setValue('state', 'answered');
+			cardGr.update();
+		}
+	},
+
+	/*
+	 * mark a GAME_CARD_M2M record unanswered to take it out of play
+	 *
+	 * @param sys_id of GAME_CARD_M2M
+	 * @return none
+	 *
+	 */
+	setUnanswered : function(m2mID) {
+
+		var cardGr = new GlideRecord(Constants.GAME_CARD_M2M);
+
+		if (cardGr.get(m2mID)) {
+			cardGr.setValue('state', 'unanswered');
+			cardGr.update();
+		}
+
+	},
+
+	/*
+	 * setPlayerAmount - update a player's score
+	 *
+	 * @param playerID - sys_id of player record to update
+	 * @param cardAmount - amount to add to the player's score
+	 * @return new player score
+	 *
+	 */
+	setPlayerAmount : function(playerID, cardAmount) {
+
+		var playerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+
+		if (playerGr.get(playerID)) {
+			var pAmt = parseInt(playerGr.getValue('amount'), 10);
+			pAmt += cardAmount;
+			playerGr.setValue('amount', pAmt);
+			playerGr.update();
+
+			return pAmt;
+		}
+
+		return;
+
+	},
+
+	/*
+	 * Update the player's final jeopardy wager and answer
+	 *
+	 * @param sys_id of GAME_PLAYER_M2M record
+	 * @param amount wagered
+	 * @param answer to final jeopardy question
+	 * @return none
+	 *
+	 */
+	updateFinalJeopardy : function(playerID, wager, answer) {
+
+		var playerM2M = new GlideRecord(Constants.GAME_PLAYER_M2M);
+		playerM2M.get(playerID);
+
+		playerM2M.setValue('final_wager', wager);
+		playerM2M.setValue('final_answer', answer);
+		playerM2M.update();
+
+	},
+
+	/*
+	 * set who has control of the board (and clear who used to have it)
+	 *
+	 * @param sys_id of GAME_PLAYER_M2M record
+	 * @return none
+	 *
+	 */
+	setControl : function(playerID) {
+
+		var playerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+
+		if (playerGr.get(playerID)) {
+			playerGr.setValue('control', true);
+			playerGr.update();
+
+			// Update the player in this game with former control
+			var otherPlayerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+
+			otherPlayerGr.addQuery('game', playerGr.getValue('game'));
+			otherPlayerGr.addQuery('sys_id', '!=', playerID);
+			otherPlayerGr.addQuery('control', true);
+
+			otherPlayerGr.query();
+			if (otherPlayerGr.next()) {
+				otherPlayerGr.setValue('control', false);
+				otherPlayerGr.update();
+			}
+
+		}
+
+		return playerGr.getUniqueValue();
+
+	},
+
+	/*
+	 * identify the winner, set the flag on their profile, and update their total winnings
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	findAndSetWinner : function() {
+
+		var playerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+
+		playerGr.addQuery('game', this.gameID);
+		playerGr.orderByDesc('amount');
+		playerGr.setLimit(1);
+		playerGr.query();
+
+		if (playerGr.next()) {
+			playerGr.setValue('winner', true);
+			playerGr.update();
+			gs.info('>>>findAndSetWinner(): winner=' + playerGr.getValue('winner'));
+			var amount = parseInt(playerGr.getValue('amount'), 10);
+			var playerID = playerGr.getValue('player');
+			this.addPlayerProfileAmount(playerID, amount);
+		}
+
+	},
+
+	/*
+	 * add the player's amount from GAME_PLAYER_M2M record to their PLAYER_TABLE profile record
+	 *
+	 * @param PLAYER_TABLE sys_id
+	 * @param integer - amount won
+	 *
+	 * @return new amount in user's profile
+	 *
+	 */
+	addPlayerProfileAmount : function(playerID, gameAmount) {
+
+		var playerGr = new GlideRecord(Constants.PLAYER_TABLE);
+
+		if (playerGr.get(playerID)) {
+			var gAmt = parseInt(gameAmount, 10);
+			var pAmt = parseInt(playerGr.getValue('amount'), 10);
+			pAmt += gAmt;
+			playerGr.setValue('amount', pAmt);
+			playerGr.update();
+
+			return pAmt;
+		}
+
+		return;
+
+	},
+
+	/*
+	 * getPlayers - get a list of players and scores for current game
+	 *
+	 * @param - gameID - sysID of the game record (default: this.gameID)
+	 * @return - array of objects
+	 *
+	 */
+	getPlayers : function(gameID) {
+
+		var list = [];
+		var playerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+		var myGameID = gameID || this.gameID;
+
+		playerGr.addQuery('game', myGameID);
+		playerGr.addQuery('state', 'primary');
+		playerGr.orderBy('order');
+		playerGr.query();
+
+		while (playerGr.next()) {
+			var obj = {};
+			obj.name         = playerGr.player.getDisplayValue();
+			obj.id           = playerGr.getUniqueValue();
+			obj.amount       = playerGr.getValue('amount');
+			obj.control      = (playerGr.getValue('control') == 1);
+			obj.final_answer = playerGr.getValue('final_answer');
+			obj.final_wager  = playerGr.getValue('final_wager');
+			obj.final_url    = this.makeGamePlayerURL(playerGr);
+			list.push(obj);
+		}
+
+		return list;
+	},
+
+	/*
+	 * check if there are a minimum of 3 primary players
+	 *
+	 * @param none
+	 * @return boolean (true=3 primary players found)
+	 *
+	 */
+	checkPlayers : function() {
+
+		var ga = new GlideAggregate(Constants.GAME_PLAYER_M2M);
+
+		ga.addAggregate('COUNT');
+		ga.addQuery('game', this.gameID);
+		ga.addQuery('state', 'primary');
+		ga.query();
+
+		if (ga.next()) {
+			var count = parseInt(ga.getAggregate('COUNT'), 10);
+			if (count == 3) {
+				return true;
+			}
+		}
+
+		return false;
+	},
+
+	/*
+	 * Generate a random game of GAME_CARD_M2M records based on the categories
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	generateRandomGame : function() {
+
+		// Get a list of categories for this game
+		var catIDList = this.getGameCategories();
+
+		// For each category, pick five random cards (one per difficulty)
+
+		for (var i = 0; i < catIDList.length; i++) {
+
+			var cat = catIDList[i];
+			var cardList = this.getCardListByCat(cat.id);
+
+			for (j = 0; j < cardList.length; j++) {
+				var cardID = cardList[j];
+				this.createGameCard(cardID);
+			}
+
+		}
+
+	},
+
+	/*
+	 * get a list of random cards based on a specific category
+	 * (one card per difficulty)
+	 *
+	 * @param sys_id of CATEGORY_TABLE
+	 * @return array of card objects
+	 *
+	 */
+	getCardListByCat : function(catID) {
+
+		var maxDifficulty = this.gameGr.n_rows;
+		var list = [];
+
+		for (var i = 1; i <= maxDifficulty; i++) {
+
+			// Build list of cards for this category and difficulty
+			var diffList = [];
+			var cardGr = new GlideRecord(Constants.CARD_TABLE);
+			cardGr.addQuery('category', catID);
+			cardGr.addQuery('difficulty', i.toString());
+			cardGr.addQuery('active', true);
+			cardGr.query();
+
+			// gs.info(cardGr.getEncodedQuery() + '-->' + cardGr.getRowCount());
+
+			while (cardGr.next()) {
+				diffList.push(cardGr.getUniqueValue());
+			}
+
+			// gs.info(JSON.stringify(diffList, null, 4));
+
+			var randomIndex = this.getRandomNumber(0, diffList.length - 1);
+			list.push(diffList[randomIndex]);
+		}
+
+		return list;
+
+	},
+
+	/*
+	 * create a GAME_CARD_M2M record for the given CARD_TABLE sys_id
+	 *
+	 * @param sys_id of CARD_TABLE record
+	 * @return sys_id of new M2M record
+	 *
+	 */
+	createGameCard : function(cardID) {
+
+		var cardM2M = new GlideRecord(Constants.GAME_CARD_M2M);
+
+		cardM2M.newRecord();
+		cardM2M.setValue('game', this.gameID);
+		cardM2M.setValue('card', cardID);
+
+		// gs.info('createGameCard(): gameID=' + this.gameID);
+		var id = cardM2M.insert();
+
+		return id;
+	},
+
+	/*
+	 * get the next number for a game player m2m record
+	 *
+	 * @param none
+	 * @return integer - new next number
+	 *
+	 */
+	getNextPlayerNumber : function() {
+
+		var player = new GlideRecord(Constants.GAME_PLAYER_M2M);
+		// Get highest number to date
+		player.addQuery('game', this.gameID);
+		player.orderByDesc('order');
+		player.setLimit(1);
+		player.query();
+
+		// If there's a record - use it
+		if (player.next()) {
+			var max = parseInt(player.getValue('order'), 10);
+			return ++max;
+		}
+
+		// Otherwise this is the first
+		return 1;
+
+	},
+
+	/*
+	 * generate a random number between 1 and max
+	 *
+	 * @param integer - minimum value
+	 * @param integer - maxium value
+	 * @return integer
+	 */
+	getRandomNumber : function(min, max) {
+
+		return Math.floor(Math.random() * (max - min)) + min;
+
+	},
+
+	/*
+	 * Check to see if the JeopardyExporter processor exists
+	 * why you ask? Because if it is, we can expose the UI action to export an entire game
+	 *
+	 * @param none
+	 * @return boolean (true=record exists)
+	 *
+	 */
+	exporterExists : function() {
+
+		var procGr = new GlideRecord(Constants.PROCESSOR_TABLE);
+		procGr.addQuery('name', 'ExportJeopardyGame');
+		procGr.query();
+
+		return procGr.hasNext();
+
+	},
+
+	/*
+	 * set the game state
+	 *
+	 * @param string - state value to set
+	 * @return none
+	 *
+	 */
+	setGameState : function(stateVal) {
+
+		this.gameGr.setValue('state', stateVal);
+		this.gameGr.update();
+
+	},
+
+	/*
+	 * set the active_card field so the host knows what the answer and question are
+	 *
+	 * @param JSON string
+	 * @return none
+	 *
+	 */
+	setActiveCard : function(json) {
+
+		this.gameGr.setValue('active_card', json);
+		this.gameGr.update();
+	},
+
+	/*
+	 * reset a game, players, and cards
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	resetGame : function() {
+
+		this.gameGr.setValue('state', this.defaultGameState);
+		this.gameGr.active_card = '';
+		this.gameGr.update();
+
+		this._resetPlayers();
+		this._setPlayer1Control();
+		this._resetCards();
+	},
+
+	/*
+	 * reset the GAME_PLAYER_M2M records
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	_resetPlayers : function() {
+
+		var playerGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+		playerGr.addQuery('game', this.gameID);
+		playerGr.query();
+
+		while (playerGr.next()) {
+			playerGr.setValue('amount', 0);
+			playerGr.setValue('final_wager', 0);
+			playerGr.setValue('final_answer', '');
+			playerGr.setValue('control', false);
+			playerGr.setValue('winner', false);
+			playerGr.update();
+		}
+	},
+
+	/*
+	 * Set the first player to have control of the board by default
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	_setPlayer1Control : function() {
+
+		var playerList = this.getPlayers();
+		this.setControl(playerList[0].id);
+	},
+
+	/*
+	 * reset the GAME_CARD_M2M records for this game
+	 *
+	 * @param none
+	 * @return none
+	 *
+	 */
+	_resetCards : function() {
+
+		var cardGr = new GlideRecord(Constants.GAME_CARD_M2M);
+		cardGr.addQuery('game', this.gameID);
+		cardGr.query();
+
+		while (cardGr.next()) {
+			cardGr.setValue('state', this.defaultCardState);
+			cardGr.setValue('answered_by', '');
+			cardGr.update();
+		}
+	},
+
+	type: 'Util'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-01-27 22:58:15</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>89a92241db9fef0069c5fd131d961940</sys_id>
+        <sys_mod_count>147</sys_mod_count>
+        <sys_name>Util</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_script_include_89a92241db9fef0069c5fd131d961940</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-04-08 04:54:25</sys_updated_on>
+    </sys_script_include>
+</record_update>

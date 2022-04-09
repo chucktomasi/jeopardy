@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function(spUtil, $scope, $timeout, $http) {
+	/* widget controller */
+	var c = this;
+
+	spUtil.recordWatch($scope, 'x_orb_jeopardy_game', 'state=playing^sys_id=' + c.data.game.id, function(name) {
+		console.log('game updated');
+		c.server.update();
+	});
+
+	$scope.gameOver = function() {
+		var reqBody = {
+			"game_id" : c.data.game.id,
+			"state" : "complete"
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_orb_jeopardy/game/set_state",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			console.log('gameOver(): success');
+			document.getElementById("game").innerHTML = c.data.game.name + "<br />Game Over";
+			document.getElementById("answer").innerHTML = "";
+			document.getElementById("question").innerHTML = "";
+		}, function failure(response) {
+			console.log('gameOver(): failure');
+		});
+
+	}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+.game,.answer,.question {
+  font-family : gilroybold,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  color : #fff;
+  font-size : 24pt;
+  text-transform : uppercase;
+}
+
+.answer {
+  background-color : #032D42;
+  color : #86ED78;
+}
+
+.question {
+  background-color : #86ED78;
+  color : #032D42;
+}
+
+.footer {
+  background-color : #333;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>jeopardy_host</id>
+        <internal>false</internal>
+        <link/>
+        <name>Jeopardy Host</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	var gameID = $sp.getParameter('game_id');
+	var gameGr = new GlideRecord('x_orb_jeopardy_game');
+	if (!gameGr.get(gameID)) {
+		gs.addErrorMessage('Error reading game_id: ' + gameID);
+		return;
+	}
+
+	// console.log('active_card=' + gameGr.getValue('active_card'));
+	data.card = JSON.parse(gameGr.getValue('active_card'));
+
+	data.game = {
+		"id" : gameGr.getUniqueValue(),
+		"name" : gameGr.getDisplayValue()
+	};
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-02-18 19:33:12</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>075e0f80db376f00371478b5ae9619bd</sys_id>
+        <sys_mod_count>87</sys_mod_count>
+        <sys_name>Jeopardy Host</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_widget_075e0f80db376f00371478b5ae9619bd</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-03-30 23:53:19</sys_updated_on>
+        <template><![CDATA[<div class="container">
+
+  <div ng-if="c.data.card">
+    <div class="game" id="game">
+      {{c.data.game.name}} - {{c.data.card.amount | currency:"$":0}}
+    </div>
+    <div class="answer" id="answer">
+      {{c.data.card.answer}}
+    </div>
+    <div class="question" id="question">
+      {{c.data.card.question}}
+    </div>
+
+  </div>
+  <div ng-if="!c.data.card">
+    <div class="game">
+      {{c.data.game.name}}
+    </div>
+    <div class="answer">
+      No card has been selected
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <center>
+        <button class="btn btn-danger" ng-click="gameOver()">
+          Game Over
+        </button>
+      </center>
+    </div>
+  </footer>
+
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

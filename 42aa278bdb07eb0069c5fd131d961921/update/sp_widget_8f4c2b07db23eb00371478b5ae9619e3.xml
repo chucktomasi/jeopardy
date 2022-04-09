@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {  /* widget controller */
+	var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrapper {
+  
+/*  height : 100%; */
+  width : 100%;
+  text-align : center;
+  font-family : gilroybold,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  display: flex;
+}
+
+.board {
+  width : 100%;
+  height : 100%;
+  border-spacing : 15px;
+  border-collapse : separate;
+  background-color : black;
+}
+
+.cat,.card {
+  /* background-color : #060ce9; */
+  background-color : #032d42;
+  text-align : center;
+  text-transform : uppercase;
+  width : 150px;
+}
+
+.cat {
+  font-size : 24pt;
+  color : #fff;
+  line-height : 90%;
+  cell-padding : 10pt;
+}
+
+a:link,a:visited,a:hover,a:active {
+  /* color : orange; */
+  color : #86ED78;
+}
+
+.debug {
+  background-color : #ddd;
+  color : #000;
+}
+
+.navBtn {
+  background-color : #24C2CE;
+  color : #032D42;
+}
+
+.playerContainer,.playerContainerActive {
+  background-color : #404040;
+  border-radius : 10px;
+  margin : 10px;
+  padding : 5px;
+  color : #fff;
+}
+
+.playerContainerActive {
+  background-color : #86ED78;
+  color: #293E40;
+}
+
+.playerName,.playerAmount {
+  font-size : 2em;
+  text-align : center;
+}
+
+.playerAmount {
+  font-size: 1.5em;
+}
+
+.mainLeft {
+  width : 250px;
+}
+
+.mainRight {
+  width : 100%;
+  height : calc(100vh - 95px);
+  display:table-cell;
+  vertical-align : middle;
+  /* background-color : #060ce9; */
+  background-color : #293e40;
+  text-align : center;
+  text-transform : uppercase;
+  color : #86ED78;
+  font-size : 56pt;
+  white-space : normal;
+}
+
+.nav {
+  text-align : center;
+}
+
+.navTableCell {
+  /* border : 1px solid #999999; */
+}
+
+.playerTable, .playerTableBody, .playerTableRow, .playerTableCell {
+  background-color : #eee;
+}
+
+.secret {
+  border : 1px solid #999999;
+}
+
+.thumb {
+  text-align : center;
+}
+
+.fa-thumbs-o-up {
+  color : green;
+}
+
+.fa-thumbs-o-down {
+  color : red;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>jeopardy_board</id>
+        <internal>false</internal>
+        <link/>
+        <name>Jeopardy Board</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	var gameId = $sp.getParameter('game_id') || "2043220ddb5fef0069c5fd131d96197f";
+	var gameGr = new GlideRecord('x_orb_jeopardy_game');
+	if (gameGr.get(gameId)) {
+		var ju = new Util(gameGr);
+		data.categories = ju.getGameCategories();
+		gs.info('categories=' + JSON.stringify(data.categories, null, 4));
+		
+		var board = ju.getCardList();
+		data.cardList = ju.transposeBoard(board);
+		data.players = ju.getPlayers();
+		data.game_id = gameId;
+		
+		if (gameGr.getValue('state') == 'pending') {
+			ju.setGameState('playing');
+		}
+		
+	} else {
+		console.log('Cannot read game');
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-02-15 19:10:05</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>8f4c2b07db23eb00371478b5ae9619e3</sys_id>
+        <sys_mod_count>162</sys_mod_count>
+        <sys_name>Jeopardy Board</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_widget_8f4c2b07db23eb00371478b5ae9619e3</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-02-11 15:31:09</sys_updated_on>
+        <template><![CDATA[<div class="wrapper">
+
+  <div class="mainLeft">
+    <div class="player" ng-repeat="player in c.data.players">
+      <div ng-if="player.control" class="playerContainerActive" ng-include="'jbPlayerCard'"></div>
+      <div ng-if="!player.control" class="playerContainer" ng-include="'jbPlayerCard'"></div>
+    </div>
+
+    <div>
+      <a href="?id=jeopardy_final&game_id={{data.game_id}}">
+        <button class="btn navBtn">
+          <i class="fa fa-flag-checkered fa-2x" aria-hidden="true"></i>&nbsp;Final Jeopardy
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div class="mainRight">
+    <table class="board">
+      <tr>
+        <td class="cat" ng-repeat="cat in data.categories">
+          <div data-toggle="tooltip" data-placement="bottom" title="{{cat.description}}">
+            {{cat.name}}
+          </div>
+        </td>
+      </tr>
+
+      <tr ng-repeat="row in data.cardList">
+        <td class="card" ng-repeat="card in row">
+          <div class="card-money" ng-if="card.state == 'answered' || card.state == 'unanswered'">
+            &nbsp;
+          </div>
+          <div class="card-money" ng-if="card.state == 'queued'">
+            <a href="?id=jeopardy_card&card_id={{card.m2m_id}}&game_id={{data.game_id}}">{{card.amount | currency:"$":0}}</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+]]></template>
+    </sp_widget>
+</record_update>

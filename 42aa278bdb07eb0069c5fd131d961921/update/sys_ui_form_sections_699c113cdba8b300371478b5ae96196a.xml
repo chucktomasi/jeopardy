@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="699c113cdba8b300371478b5ae96196a" sys_domain="global" table="x_orb_jeopardy_game" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-03-30 01:58:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a99c513cdba8b300371478b5ae9619a3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_jeopardy_game" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">699c113cdba8b300371478b5ae96196a</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">2c43220ddb5fef0069c5fd131d961963</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-03-30 01:58:40</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-03-30 23:37:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>09d58641dbe4f300371478b5ae96194f</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_jeopardy_game" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">699c113cdba8b300371478b5ae96196a</sys_ui_form>
+            <sys_ui_section caption="Verification" display_value="Verification" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">c1d58641dbe4f300371478b5ae96194c</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-03-30 23:37:20</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-03-30 01:58:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>699c513cdba8b300371478b5ae9619a4</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_jeopardy_game" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">699c113cdba8b300371478b5ae96196a</sys_ui_form>
+            <sys_ui_section caption="Active card" display_value="Active card" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">a99c113cdba8b300371478b5ae961968</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-03-30 23:37:20</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-03-30 01:58:40</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e19c513cdba8b300371478b5ae9619a8</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_orb_jeopardy_game" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">699c113cdba8b300371478b5ae96196a</sys_ui_form>
+            <sys_ui_section caption="Final Jeopardy" display_value="Final Jeopardy" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">a99c113cdba8b300371478b5ae961969</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-03-30 23:37:20</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_orb_jeopardy_game</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-03-30 01:58:40</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>699c113cdba8b300371478b5ae96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_orb_jeopardy_game</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_ui_form_sections_699c113cdba8b300371478b5ae96196a</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-03-30 01:58:40</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>
