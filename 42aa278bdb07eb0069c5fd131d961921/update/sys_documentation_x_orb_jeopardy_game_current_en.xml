@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="current" label="Current" language="en" table="x_orb_jeopardy_game">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>current</element>
+            <help/>
+            <hint/>
+            <label>Current</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_game</name>
+            <plural>Currents</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2022-12-22 18:28:58</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Current</sys_name>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_documentation_x_orb_jeopardy_game_current_en</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2022-12-22 18:28:58</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

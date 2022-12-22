@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="sys_import_set_row" label="Jeopardy Q&amp;A" max_length="40" name="x_orb_jeopardy_ihub_import_79321e751ba601102e4d4156bc4bcb2b" sizeclass="0" type="collection">
-        <element attributes="edge_encryption_enabled=true,import_attribute_name=Answer" label="Answer" max_length="167" name="u_answer" type="string"/>
-        <element attributes="edge_encryption_enabled=true,import_attribute_name=Category" label="Category" max_length="40" name="u_category" type="string"/>
-        <element attributes="import_attribute_name=Difficulty" label="Difficulty" max_length="40" name="u_difficulty" type="integer"/>
-        <element attributes="edge_encryption_enabled=true,import_attribute_name=Question" label="Question" max_length="45" name="u_question" type="string"/>
-    </element>
-</database>

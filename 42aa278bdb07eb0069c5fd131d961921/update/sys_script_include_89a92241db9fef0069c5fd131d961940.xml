@@ -146,9 +146,9 @@ Util.prototype = {
 
 			list.push(obj);
 		}
-		
+
 		return list;
-		
+
 	},
 
 	/*
@@ -196,6 +196,50 @@ Util.prototype = {
 		}
 
 		return list;
+	},
+
+	/*
+	 * Get the info about the current game
+	 *
+	 * @params - none
+	 * @return Object
+	 *
+	 */
+	getCurrentGame : function() {
+
+		var gameGr = new GlideRecord(Constants.GAME_TABLE);
+
+		gameGr.addQuery('current', true);
+		gameGr.query();
+
+		if (!gameGr.next()) {
+			return {};
+		}
+
+		var gameObj = {
+			"name"   : gameGr.getDisplayValue(),
+			"sys_id" : gameGr.getUniqueValue(),
+			"player" : [],
+			"date"   : gameGr.date.getDisplayValue()
+
+		};
+
+		var m2mGr = new GlideRecord(Constants.GAME_PLAYER_M2M);
+		m2mGr.addQuery('game', gameObj.sys_id);
+		m2mGr.orderBy('order');
+		m2mGr.query();
+		gs.info('rows=' + m2mGr.getRowCount());
+
+		while (m2mGr.next()) {
+			var obj = {
+				"name" : m2mGr.getDisplayValue(),
+				"order" : m2mGr.getValue('order')
+			};
+			gameObj.player.push(obj);
+		}
+
+		return gameObj;
+
 	},
 
 	/*
@@ -1028,16 +1072,14 @@ Util.prototype = {
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2019-01-27 22:58:15</sys_created_on>
-        <sys_customer_update>false</sys_customer_update>
         <sys_id>89a92241db9fef0069c5fd131d961940</sys_id>
-        <sys_mod_count>147</sys_mod_count>
+        <sys_mod_count>153</sys_mod_count>
         <sys_name>Util</sys_name>
         <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
         <sys_policy>read</sys_policy>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
         <sys_update_name>sys_script_include_89a92241db9fef0069c5fd131d961940</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2022-04-08 04:54:25</sys_updated_on>
+        <sys_updated_on>2022-12-22 18:48:40</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -98,6 +98,20 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>current</element>
+            <position>7</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2022-12-22 18:28:58</sys_created_on>
+            <sys_id>993e047f87b75d10d978a7d73cbb35ae</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_game" sys_domain="global" view="Default view">2c43220ddb5fef0069c5fd131d961963</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2022-12-22 18:28:58</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>
@@ -106,7 +120,6 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
             <sys_created_on>2019-01-27 22:27:25</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
             <sys_id>2c43220ddb5fef0069c5fd131d961963</sys_id>
@@ -115,7 +128,6 @@
             <sys_overrides/>
             <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
             <sys_policy/>
-            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
             <sys_update_name>sys_ui_section_2c43220ddb5fef0069c5fd131d961963</sys_update_name>
             <sys_updated_by>chuck.tomasi</sys_updated_by>

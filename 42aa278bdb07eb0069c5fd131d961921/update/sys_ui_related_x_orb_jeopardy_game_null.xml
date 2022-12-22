@@ -2,59 +2,59 @@
     <sys_ui_related sys_domain="global" table="x_orb_jeopardy_game" version="2" view="">
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">7b479c370fffa3007500cbdce1050ecd</list_id>
+            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">158d483f87b75d10d978a7d73cbb35d5</list_id>
             <order_by/>
             <position>0</position>
             <related_list>x_orb_jeopardy_m2m_game_player.game</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2019-03-01 21:50:39</sys_created_on>
-            <sys_id>f7479c370fffa3007500cbdce1050ece</sys_id>
+            <sys_created_on>2022-12-22 18:25:58</sys_created_on>
+            <sys_id>d98d483f87b75d10d978a7d73cbb35d6</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2019-03-01 21:50:39</sys_updated_on>
+            <sys_updated_on>2022-12-22 18:25:58</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">7b479c370fffa3007500cbdce1050ecd</list_id>
+            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">158d483f87b75d10d978a7d73cbb35d5</list_id>
             <order_by/>
             <position>1</position>
             <related_list>x_orb_jeopardy_m2m_game_category.game</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2019-03-01 21:50:39</sys_created_on>
-            <sys_id>73479c370fffa3007500cbdce1050ecf</sys_id>
+            <sys_created_on>2022-12-22 18:25:58</sys_created_on>
+            <sys_id>158d483f87b75d10d978a7d73cbb35d7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2019-03-01 21:50:39</sys_updated_on>
+            <sys_updated_on>2022-12-22 18:25:58</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">7b479c370fffa3007500cbdce1050ecd</list_id>
+            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">158d483f87b75d10d978a7d73cbb35d5</list_id>
             <order_by/>
             <position>2</position>
-            <related_list>x_orb_jeopardy_card.game</related_list>
-            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
-            <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2019-03-01 21:50:39</sys_created_on>
-            <sys_id>f7479c370fffa3007500cbdce1050ecf</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2019-03-01 21:50:39</sys_updated_on>
-        </sys_ui_related_list_entry>
-        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
-            <filter/>
-            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">7b479c370fffa3007500cbdce1050ecd</list_id>
-            <order_by/>
-            <position>3</position>
             <related_list>x_orb_jeopardy_m2m_game_card.game</related_list>
             <sys_class_name>sys_ui_related_list_entry</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2019-03-01 21:50:39</sys_created_on>
-            <sys_id>7f479c370fffa3007500cbdce1050ecf</sys_id>
+            <sys_created_on>2022-12-22 18:25:58</sys_created_on>
+            <sys_id>198d483f87b75d10d978a7d73cbb35d7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2019-03-01 21:50:39</sys_updated_on>
+            <sys_updated_on>2022-12-22 18:25:58</sys_updated_on>
+        </sys_ui_related_list_entry>
+        <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
+            <filter/>
+            <list_id display_value="Game - Default view" name="x_orb_jeopardy_game" related_list="NULL" sys_domain="global" view="Default view">158d483f87b75d10d978a7d73cbb35d5</list_id>
+            <order_by/>
+            <position>3</position>
+            <related_list>x_orb_jeopardy_message.game</related_list>
+            <sys_class_name>sys_ui_related_list_entry</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2022-12-22 18:25:58</sys_created_on>
+            <sys_id>1d8d483f87b75d10d978a7d73cbb35d7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2022-12-22 18:25:58</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list action="INSERT_OR_UPDATE">
             <calculated_name>Game - Default view</calculated_name>
@@ -65,20 +65,18 @@
             <related_list/>
             <sys_class_name>sys_ui_related_list</sys_class_name>
             <sys_created_by>chuck.tomasi</sys_created_by>
-            <sys_created_on>2019-03-01 21:50:39</sys_created_on>
-            <sys_customer_update>false</sys_customer_update>
+            <sys_created_on>2022-12-22 18:25:58</sys_created_on>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>7b479c370fffa3007500cbdce1050ecd</sys_id>
+            <sys_id>158d483f87b75d10d978a7d73cbb35d5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Game - Default view</sys_name>
             <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
             <sys_policy/>
-            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
             <sys_update_name>sys_ui_related_x_orb_jeopardy_game_null</sys_update_name>
             <sys_updated_by>chuck.tomasi</sys_updated_by>
-            <sys_updated_on>2019-03-01 21:50:39</sys_updated_on>
+            <sys_updated_on>2022-12-22 18:25:58</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="d3dc0cfb87b75d10d978a7d73cbb35df" label="Message" max_length="40" name="x_orb_jeopardy_message" type="collection">
+        <element label="Body" max_length="1000" name="body" type="string"/>
+        <element label="Game" max_length="32" name="game" reference="x_orb_jeopardy_game" type="reference"/>
+        <element display="true" label="ID" max_length="40" name="id" type="string"/>
+        <index name="index">
+            <element name="game"/>
+        </index>
+    </element>
+</database>

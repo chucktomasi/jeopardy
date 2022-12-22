@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_orb_jeopardy.Message</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Basic message passing routines</description>
+        <name>Message</name>
+        <script><![CDATA[var Message = Class.create();
+Message.prototype = {
+    initialize: function() {
+    },
+	
+	createMessage : function(id, body, gameID) {
+		
+		var messageGr = new GlideRecord(Constants.MESSAGE_TABLE);
+		
+		messageGr.newRecord();
+		messageGr.setValue('game', gameID);
+		messageGr.setValue('id', id);
+		messageGr.setValue('body', body);
+		var sysID = messageGr.insert();
+		
+		return sysID;
+	},
+	
+	resetMessages : function(gameID) {
+		
+		var messageGr = new GlideRecord(Constants.MESSAGE_TABLE);
+		
+		messageGr.addQuery('game', gameID);
+		messageGr.deleteMultiple();
+
+	},
+
+    type: 'Message'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2022-12-22 18:26:48</sys_created_on>
+        <sys_id>b69dc83f87b75d10d978a7d73cbb35a4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Message</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_script_include_b69dc83f87b75d10d978a7d73cbb35a4</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-12-22 18:27:03</sys_updated_on>
+    </sys_script_include>
+</record_update>
