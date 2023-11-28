@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $http, $window, $timeout, spUtil) {
+	/* widget controller */
+	var c = this;
+
+	$scope.cardAmount = c.data.card.amount;
+	$scope.timesup = false;
+	$scope.control = 0;
+
+	// Find out who is in control
+	for (var i = 0; i < c.data.players.length; i++) {
+		if (c.data.players[i].control) {
+			$scope.control = i;
+			break;
+		}
+	}
+
+	// Send update to the game record
+	// to be picked up with the host widget
+	// so the game show host has the answer
+	var reqBody = {
+		"final_jeopardy" : false,
+		"card" : c.data.card.m2m_id,
+		"game" : c.data.game_id
+	};
+
+	$http({
+		method : "POST",
+		url : "/api/x_orb_jeopardy/card/game_card",
+		headers : {"Content-type" : "application/json"},
+		data : reqBody
+	}).then(function success(response) {
+		console.log('updateActiveCard(): success');
+	}, function failure(response) {
+		console.log('updateActiveCard(): failure');
+	});
+
+	if (c.data.card.daily_double == true) {
+		document.getElementById("amount").readOnly = false;
+	} else {
+		document.getElementById("amount").readOnly = true;
+	}
+	// console.log('players=' + JSON.stringify(c.data.players, null, 4));
+
+
+	$scope.updatePlayer = function(playerID, playerName, answer) {
+
+		var amt = parseInt($scope.cardAmount, 10);
+
+		amt *= (answer == 'correct') ? 1 : -1;
+
+		// console.log('updatePlayer(): playerID=' + playerID + ' amount=' + amt);
+		var reqBody = {
+			"game"   : c.data.game_id,
+			"player" : playerID,
+			"card"   : c.data.card.m2m_id,
+			"amount" : amt
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_orb_jeopardy/card/player_update",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			// console.log('updatePlayer(): success' + JSON.stringify(response, null, 4));
+
+			// Update the player amount live
+			for (var i = 0; i < c.data.players.length; i++) {
+				var p = c.data.players[i];
+				if (p.id == playerID) {
+					c.data.players[i].amount = response.data.result.amount;
+				}
+			}
+		}, function failure(response) {
+			console.log('updatePlayer(): failure' + JSON.stringify(response, null, 4));
+		});
+
+		if (answer == 'correct') {
+			setControl(playerID);
+			$window.open('?id=jeopardy_board&game_id=' + c.data.game_id, "_self");
+		} else {
+			spUtil.addTrivialMessage(playerName + ' ' + amt);
+			if (c.data.card.daily_double) {
+				// console.log('>>> DD WRONG');
+				_markUnanswered();
+				$window.open('?id=jeopardy_board&game_id=' + c.data.game_id, "_self");			
+			} else {
+				// Live update control color
+				$scope.control++;
+				if ($scope.control > c.data.players.length - 1)
+					$scope.control = 0;
+				for (var i = 0; i < c.data.players.length; i++) {
+					c.data.players[i].control = ($scope.control == i);
+				}
+			}
+		}
+	}
+
+	$scope.showSecret = function() {
+		var x = document.getElementById("secret");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+
+	$scope.playTimesUp = function() {
+		$scope.timesup = true;
+		$timeout(function(){
+			console.log('timeout');
+			$scope.timesup = false;
+		}, 1000);
+	}
+
+	$scope.showBoard = function() {
+		console.log('showBoard: c.data.game_id=' + c.data.game_id);
+		$window.open('?id=jeopardy_board&game_id=' + c.data.game_id, "_self");
+	}
+
+	$scope.markUnanswered = function() {
+		console.log('>>> mark unanswered');
+		_markUnanswered();
+		$window.open('?id=jeopardy_board&game_id=' + c.data.game_id, "_self");
+	}
+
+	setControl = function(playerID) {
+
+		var reqBody = {
+			"game"   : c.data.game_id,
+			"player" : playerID
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_orb_jeopardy/card/set_control",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			console.log('setControl(): success');
+		}, function failure(response) {
+			console.log('setControl(): failure');
+		});
+
+	}
+
+	_markUnanswered = function() {
+
+		var reqBody = {
+			"game"   : c.data.game_id,
+			"card"   : c.data.card.m2m_id
+		};
+
+		console.log('>>> _Marking card unanswered');
+
+		$http({
+			method : "POST",
+			url : "/api/x_orb_jeopardy/card/unanswered",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			console.log('markUnanswered(): success');
+		}, function failure(response) {
+			console.log('markUnanswered(): failure');
+		});
+
+	}
+
+	$scope.playerPass = function() {
+
+		$scope.control++;
+
+		if ($scope.control > c.data.players.length - 1) {
+			$scope.control = 0;
+		}
+
+		for (var i = 0; i < c.data.players.length; i++) {
+			c.data.players[i].control = ($scope.control == i);
+		}
+	}
+
+	$scope.showDDAnswer = function() {
+
+		var el = document.getElementById("daily_double");
+
+		if (c.data.card.attachment.type == 'image') {
+			el.innerHTML = '<img src="' + c.data.card.attachment.name + '" width="100%" />';
+		} else if (c.data.card.attachment.type == 'audio') {
+			el.innerHTML = c.data.card.answer + '<br />' + 
+				'<audio controls source src="' + c.data.card.attachment.name + '">';
+		} else {
+			el.innerHTML = c.data.card.answer;
+		}
+	}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrapper {
+  width : 100%;
+  font-family : gilroybold,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  display: flex;
+}
+
+input:read-only { 
+  background-color: #ddd;
+}
+
+.debug {
+  background-color : #ddd;
+  color : #000;
+}
+
+.navBtn {
+  background-color : #24C2CE;
+  color : #032D42;
+}
+
+.playerContainer,.playerContainerActive {
+  background-color : #404040;
+  border-radius : 10px;
+  margin : 10px;
+  padding : 5px;
+  color : #fff;
+}
+
+.playerContainerActive {
+  background-color : #86ED78;
+  color: #032D42;
+}
+
+.playerName,.playerAmount {
+  font-size : 2em;
+  text-align : center;
+}
+
+.playerAmount {
+  font-size: 1.5em;
+}
+
+.playerButtonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  text-align : center;
+  white-space : nowrap;
+}
+
+.leftButton {
+  background-color: #009156;
+  color : #fff;
+}
+
+.centerButton {
+  background-color: #24C2CE;
+  color : #fff;
+}
+
+.rightButton {
+  background-color: #FC7786;
+  color : #fff;
+}
+
+.cardImg {
+  object-fit : contain;
+}
+
+.mainLeft {
+  width : 250px;
+}
+
+.mainRight,.cardAnswer,#daily_double {
+	text-align : center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height : calc(100vh - 95px);
+  background-color : #032D42;
+  text-transform : uppercase;
+  color : #86ED78;
+  font-size : 56pt;
+  white-space : normal;
+  padding : 20px;
+}
+
+.playerTable, .playerTableBody, .playerTableRow, .playerTableCell {
+  background-color : #eee;
+}
+
+.secret {
+  border : 1px solid #999999;
+}
+
+.thumb {
+  text-align : center;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>jeopardy_card</id>
+        <internal>false</internal>
+        <link/>
+        <name>Jeopardy Card</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	var cardID = $sp.getParameter('card_id');
+	var gameID = $sp.getParameter('game_id');
+	
+	data.card_id = cardID;
+	data.game_id = gameID;
+	
+	var gameGr = new GlideRecord('x_orb_jeopardy_game');
+	gameGr.get(gameID);
+	var ju = new Util(gameGr);
+	
+	data.card = ju.getCard(cardID);
+	data.players = ju.getPlayers();
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-02-16 13:36:55</sys_created_on>
+        <sys_id>94a9231bdb6beb00371478b5ae96194f</sys_id>
+        <sys_mod_count>363</sys_mod_count>
+        <sys_name>Jeopardy Card</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_widget_94a9231bdb6beb00371478b5ae96194f</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2023-11-28 15:26:25</sys_updated_on>
+        <template><![CDATA[<div class="wrapper">
+  <div class="mainLeft">
+    <div class="buttonContainer">
+      <button class="btn navBtn" ng-click="showBoard();" title="Show board">
+        <i class="fa fa-th"></i>
+      </button>
+      <button class="btn navBtn" ng-click="markUnanswered();" title="Mark unanswered">
+        <i class="fa fa-ban" aria-hidden="true"></i>
+      </button>
+      <button class="btn navBtn" ng-click="playTimesUp()" title="Play timeout sound">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </button>
+      <div ng-if="timesup == true">                    
+        <audio src="Jeopardy-TimesUp.mp3" title="TimesUp" autoplay="true" control="false"/>
+      </div>
+    </div>
+
+    <div class="allPlayerContainer" id="1">
+      <div class="player" ng-repeat="player in c.data.players">
+        <div ng-if="player.control" class="playerContainerActive" ng-include="'playerCard'"></div>
+        <div ng-if="!player.control" class="playerContainer" ng-include="'playerCard'"></div>
+      </div>
+      <div class="amountContainer">
+        <input class="form-control" size="8" type="text" id="amount" ng-model="cardAmount" value="{{card.amount}}">
+      </div>
+    </div>
+  </div>
+
+  <div id="daily_double" class="mainRight" ng-if="data.card.daily_double == true" class="mainRight" ng-click="showDDAnswer();">
+    <img src="dailydouble.jpg" width="100%" />
+    <audio src="jeopardy_daily_double.mp3" title="DD" autoplay="true" control="false"/>
+  </div>
+
+  <div ng-if="data.card.daily_double == false" class="mainRight">
+    <div class="cardAnswer" ng-if="data.card.attachment.type == ''">
+      {{data.card.answer}}
+    </div>
+    <div  class="cardAnswer" ng-if="data.card.attachment.type == 'image'">
+      <img class="cardImg" src="{{data.card.attachment.name}}" />
+    </div>
+    <div  class="cardAnswer" ng-if="data.card.attachment.type == 'audio'">
+      {{data.card.answer}}
+      <audio controls source src="{{data.card.attachment.name}}">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+  <!--
+<div class="debug">
+<pre>{{c.data | json}}</pre>
+</div>
+-->
+</div>]]></template>
+    </sp_widget>
+</record_update>

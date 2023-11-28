@@ -812,7 +812,7 @@ Util.prototype = {
 
 		if (ga.next()) {
 			var count = parseInt(ga.getAggregate('COUNT'), 10);
-			if (count == 3) {
+			if (count >= 3) {
 				return true;
 			}
 		}
@@ -1073,13 +1073,13 @@ Util.prototype = {
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2019-01-27 22:58:15</sys_created_on>
         <sys_id>89a92241db9fef0069c5fd131d961940</sys_id>
-        <sys_mod_count>153</sys_mod_count>
+        <sys_mod_count>154</sys_mod_count>
         <sys_name>Util</sys_name>
         <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
         <sys_update_name>sys_script_include_89a92241db9fef0069c5fd131d961940</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2022-12-22 18:48:40</sys_updated_on>
+        <sys_updated_on>2023-11-28 15:22:49</sys_updated_on>
     </sys_script_include>
 </record_update>
