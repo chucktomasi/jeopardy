@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="INSERT_OR_UPDATE">
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <enable_ais>false</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="j_home">f4f94d77dba72f00371478b5ae96192f</homepage>
+        <icon/>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page/>
+        <logo/>
+        <notfound_page/>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application/>
+        <search_results_configuration/>
+        <sp_chat_queue/>
+        <sp_rectangle_menu/>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-02-17 15:10:08</sys_created_on>
+        <sys_id>04780937dba72f00371478b5ae9619d3</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Jeopardy</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_portal_04780937dba72f00371478b5ae9619d3</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-09-23 17:14:44</sys_updated_on>
+        <theme display_value="Jeopardy">ec1fb6fbdbab2f00371478b5ae9619cf</theme>
+        <title>Jeopardy</title>
+        <ts_index_group display_value="portal_index_group">2c3e7d1513c93300e618bfd63244b0d7</ts_index_group>
+        <url_suffix>jeopardy</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="delete_multiple" query="documentkey=04780937dba72f00371478b5ae9619d3"/>
+</record_update>

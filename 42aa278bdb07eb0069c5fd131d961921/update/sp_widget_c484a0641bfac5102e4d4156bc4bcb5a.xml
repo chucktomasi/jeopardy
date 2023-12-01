@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $window) {
+	/* widget controller */
+	var c = this;
+
+	$scope.togglePlayers = function(index) {
+		c.data.list[index].show = !c.data.list[index].show;
+	}
+
+	$scope.openPlayer = function(playerObj) {
+		console.log(playerObj.final_url);
+		$window.location.href = playerObj.final_url;
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.jeopardy {
+  background-color : #fff;
+}
+
+.title {
+  font-family : gilroybold,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  font-size : 3em;
+  color : #86ED78;
+  text-align : center;
+}
+
+.buttonBox {
+  padding : 5px 0px 5px 0px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>j_final_game_list</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Final Jeopardy Game List</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	var gameList = new Util().getFinalJeopardyGames();
+	
+	data.list = gameList;
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2022-04-08 04:32:10</sys_created_on>
+        <sys_id>c484a0641bfac5102e4d4156bc4bcb5a</sys_id>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>Final Jeopardy Game List</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_widget_c484a0641bfac5102e4d4156bc4bcb5a</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-04-09 18:11:44</sys_updated_on>
+        <template><![CDATA[<div>
+
+  <div class="title">
+    <img src="ServiceNow_logo_CMYK_White_Green.png" width="80%"/><br />
+    Final Jeopardy
+  </div>
+  <table class="table table-hover jeopardy">
+    <th>Name</th>
+    <th>Players</th>
+    <tr ng-repeat="game in data.list">
+      <td>
+        {{game.name}}
+        <br />
+        {{game.date}}
+      </td>
+      <td>
+        <button class="btn btn-success" ng-if="!game.show" ng-click="togglePlayers($index)">
+          Show Players
+        </button>
+        <button class="btn btn-danger" ng-if="game.show" ng-click="togglePlayers($index)">
+          Hide Players
+        </button>
+        <div ng-if="game.show">
+          <div ng-repeat="player in game.players">
+            <div class="buttonBox">
+              <button class="btn btn-info" ng-click="openPlayer(player)">
+                {{player.name}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <!--
+  <pre>
+  {{c.data.list | json }}
+  </pre>
+  -->
+</div>]]></template>
+    </sp_widget>
+</record_update>

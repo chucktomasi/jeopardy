@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_formatter">
+    <sys_ui_formatter action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <angular_module/>
+        <formatter>x_orb_jeopardy_game_verification</formatter>
+        <name>Game verification</name>
+        <seismic_component/>
+        <sys_class_name>sys_ui_formatter</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-03-30 20:54:13</sys_created_on>
+        <sys_id>4260a5c5db64f300371478b5ae96198f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Game verification</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_ui_formatter_4260a5c5db64f300371478b5ae96198f</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2019-03-31 00:04:57</sys_updated_on>
+        <table>x_orb_jeopardy_game</table>
+        <type>formatter</type>
+    </sys_ui_formatter>
+</record_update>

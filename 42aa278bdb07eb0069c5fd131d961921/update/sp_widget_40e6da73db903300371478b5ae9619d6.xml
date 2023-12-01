@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, $http,spUtil) {
+	/* widget controller */
+	var c = this;
+
+	console.log('final_player start');
+	
+	$scope.submitAnswer = function() {
+
+		var wager = parseInt(c.data.player.wager, 10);
+		if (!Number.isInteger(wager)) {
+			spUtil.addErrorMessage('Please enter integers only for the wager');
+			return false;
+		}
+		c.data.player.wager = wager;
+		console.log('finalPlayer(): playerID=' + c.data.player.id + ' wager=' + c.data.player.wager);
+			var reqBody = {
+			"player" : c.data.player.id,
+			"wager"  : c.data.player.wager,
+			"answer" : c.data.player.answer
+		};
+
+		$http({
+			method : "POST",
+			url : "/api/x_orb_jeopardy/final/update",
+			headers : {"Content-type" : "application/json"},
+			data : reqBody
+		}).then(function success(response) {
+			console.log('updatePlayer(): success');
+			document.getElementById("response").innerHTML = "Thank you";
+		}, function failure(response) {
+			console.log('updatePlayer(): failure');
+		});
+
+	}
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.wrapper {
+  font-family : gilroybold,"Century Gothic",CenturyGothic,AppleGothic,sans-serif;
+  color : #fff;
+  font-size : 24pt;
+  text-transform : uppercase;
+}
+
+.playername {
+  background-color : #86ED78;
+  color : #032D42;
+}
+
+.question {
+  background-color : #032D42;
+}
+
+.label {
+  font-size:12pt;
+}
+
+.btn-sn {
+  background-color : #86ED78;
+  color : #032D42;
+}  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.btn:hover {
+  background-color: #86ED78; /* Green */
+  color: white;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>jeopardy_final_player</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Jeopardy Final Player</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+	// gs.info('final_player start');
+
+  var playerNumber = $sp.getParameter('sysparm_player');
+	var gameID = $sp.getParameter('sysparm_game');	
+
+	var playerM2M = new GlideRecord('x_orb_jeopardy_m2m_game_player');
+	playerM2M.addQuery('game.state', 'final_jeopardy');
+	playerM2M.addQuery('game', gameID);
+	playerM2M.addQuery('order', playerNumber);
+	playerM2M.query();
+	
+	if (playerM2M.next()) {
+		var playerGr = playerM2M.player.getRefRecord();
+		
+		data.player = {};
+		data.player.id = playerM2M.getUniqueValue();
+		data.player.wager = '';
+		data.player.answer = '';
+		data.player.name = playerGr.getDisplayValue();
+		data.game_id = playerM2M.getValue('game');
+		data.question = playerM2M.game.final_jeopardy.getDisplayValue();
+		data.state = 'ok';
+	} else {
+		data.state = 'no_player_found';
+		gs.error('No m2m record found for player: ' + playerNumber);
+	}
+	// gs.info('final_player end');
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-03-27 03:39:24</sys_created_on>
+        <sys_id>40e6da73db903300371478b5ae9619d6</sys_id>
+        <sys_mod_count>44</sys_mod_count>
+        <sys_name>Jeopardy Final Player</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_widget_40e6da73db903300371478b5ae9619d6</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-04-08 14:06:39</sys_updated_on>
+        <template><![CDATA[<div class="wrapper">
+  <div ng-if="data.state == 'ok'">
+    <center>
+      <div class="playername">
+        {{data.player.name}}
+      </div>
+      <div class="question">
+        {{data.question}}
+      </div>
+      <table>
+        <tr>
+          <td class="label">
+            Answer
+          </td>
+          <td>
+            <input class="form-control" placeholder="Type your answer here" type="text" size="50" name="answer" ng-model="data.player.answer" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td class="label">
+            Wager
+          </td>
+          <td>
+            <input class="form-control" placeholder="Enter integers only" type="text" name="wager" ng-model="data.player.wager" value="0" />
+          </td>
+        </tr>
+      </table>
+      <button class="btn btn-sn" ng-click="submitAnswer()">
+        Submit
+      </button>
+      <div id="response"></div>
+    </center>
+  </div>
+  <div ng-if="data.state == 'no_player_found'">
+    This link isn't active for this player/game combination right now.
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

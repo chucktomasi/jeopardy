@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>POST</http_method>
+        <name>Set Control</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+	var playerID = request.body.data.player;
+	var gameID   = request.body.data.game;
+
+	var id = new Util(gameID).setControl(playerID);
+
+	response.setBody({"player" : id});
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_orb_jeopardy/card/set_control</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/set_control</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-02-17 22:21:56</sys_created_on>
+        <sys_id>847ae2bfdb6b2f00371478b5ae961938</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Set Control</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_ws_operation_847ae2bfdb6b2f00371478b5ae961938</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2019-03-29 23:38:13</sys_updated_on>
+        <web_service_definition display_value="Jeopardy Card">ff8c5c67dbebeb00371478b5ae961997</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

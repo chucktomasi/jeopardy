@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
+    <sp_column action="INSERT_OR_UPDATE">
+        <class_name/>
+        <order>1</order>
+        <semantic_tag/>
+        <size/>
+        <size_lg/>
+        <size_sm/>
+        <size_xs/>
+        <sp_row display_value="1">c8e6da73db903300371478b5ae9619dc</sp_row>
+        <sys_class_name>sp_column</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-03-27 03:39:25</sys_created_on>
+        <sys_id>8ce6deb3db903300371478b5ae9619e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>1</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_column_8ce6deb3db903300371478b5ae9619e2</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2019-03-27 03:39:25</sys_updated_on>
+    </sp_column>
+</record_update>

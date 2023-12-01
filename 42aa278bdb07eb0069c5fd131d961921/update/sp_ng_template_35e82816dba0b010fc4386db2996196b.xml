@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="INSERT_OR_UPDATE">
+        <id>fjPlayerCard</id>
+        <sp_widget display_value="Jeopardy final">ec76721677103300086edada78106138</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-06-06 22:48:35</sys_created_on>
+        <sys_id>35e82816dba0b010fc4386db2996196b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>fjPlayerCard</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sp_ng_template_35e82816dba0b010fc4386db2996196b</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-02-11 15:27:18</sys_updated_on>
+        <template><![CDATA[<div class="playerName">
+  {{player.name}}
+</div>
+<div class="playerAmount">
+  {{player.amount | currency:"$":0}}
+</div>
+<div class="playerButtonContainer">
+  <div class="">
+    <button class="btn leftButton" ng-click="updatePlayer($index, 'correct');">
+      ${Yes}
+    </button>
+  </div>
+  <div class="">
+    <button class="btn rightButton" ng-click="updatePlayer($index, 'incorrect');">
+      ${No}
+    </button>
+  </div>
+</div>
+]]></template>
+    </sp_ng_template>
+</record_update>

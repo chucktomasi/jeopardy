@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="System Import Sets" source="com.glide.system_import_set">ab90f1f297221110cf75f7771153aff6</dependency>
+        <min_version>1.0.0</min_version>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2019-03-23 14:02:06</sys_created_on>
+        <sys_id>09e7ff3a973e5d10cf75f7771153af61</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2019-03-23 14:02:06</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

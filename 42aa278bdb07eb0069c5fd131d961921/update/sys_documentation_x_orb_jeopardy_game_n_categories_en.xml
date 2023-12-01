@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="n_categories" label="Number of categories" language="en" table="x_orb_jeopardy_game">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>n_categories</element>
+            <help/>
+            <hint/>
+            <label>Number of categories</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_game</name>
+            <plural>Number of categories</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2020-01-03 20:24:37</sys_created_on>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Number of categories</sys_name>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_documentation_x_orb_jeopardy_game_n_categories_en</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2020-01-03 20:25:06</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

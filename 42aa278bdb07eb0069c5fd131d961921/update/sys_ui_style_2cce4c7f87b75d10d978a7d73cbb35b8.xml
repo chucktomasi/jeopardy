@@ -16,6 +16,7 @@
         <sys_update_name>sys_ui_style_2cce4c7f87b75d10d978a7d73cbb35b8</sys_update_name>
         <sys_updated_by>chuck.tomasi</sys_updated_by>
         <sys_updated_on>2022-12-22 18:31:30</sys_updated_on>
+        <themed_style/>
         <value>1</value>
     </sys_ui_style>
     <sys_translated_text action="delete_multiple" query="documentkey=2cce4c7f87b75d10d978a7d73cbb35b8"/>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="7bd7bf3a973e5d10cf75f7771153afe6" label="Game Player" max_length="40" name="x_orb_jeopardy_m2m_game_player" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="0" label="Amount" max_length="40" name="amount" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Control" max_length="40" name="control" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" label="Final answer" max_length="120" name="final_answer" type="string"/>
+        <element default="0" label="Final wager" max_length="40" name="final_wager" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Game" max_length="32" name="game" reference="x_orb_jeopardy_game" reference_cascade_rule="delete" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Order" max_length="40" name="order" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Player" max_length="32" name="player" reference="x_orb_jeopardy_player" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="primary" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Primary" sequence="0" value="primary"/>
+                <element inactive_on_update="false" label="Backup" sequence="1" value="backup"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Winner" max_length="40" name="winner" type="boolean"/>
+        <index name="index">
+            <element name="game"/>
+        </index>
+        <index name="index2">
+            <element name="player"/>
+        </index>
+    </element>
+</database>

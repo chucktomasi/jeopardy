@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="69e7ff3a973e5d10cf75f7771153afbe" label="Category" max_length="40" name="x_orb_jeopardy_category" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element display="true" label="Name" max_length="40" name="name" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="current" label="Record" language="en" table="var__m_sys_hub_flow_input_ca7c96311bbea0102e4d4156bc4bcbbd">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>current</element>
+            <help/>
+            <hint/>
+            <label>Record</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_input_ca7c96311bbea0102e4d4156bc4bcbbd</name>
+            <plural/>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 18:08:52</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Record</sys_name>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_documentation_var__m_sys_hub_flow_input_ca7c96311bbea0102e4d4156bc4bcbbd_current_en</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 18:08:52</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="difficulty" table="x_orb_jeopardy_card" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>difficulty</element>
+            <name>x_orb_jeopardy_card</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>difficulty</sys_name>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_choice_x_orb_jeopardy_card_difficulty</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>difficulty</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>1</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_card</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>difficulty</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>2</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_card</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>difficulty</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>3</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_card</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>difficulty</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>4</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_card</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+            <value>4</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>difficulty</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>5</label>
+            <language>en</language>
+            <name>x_orb_jeopardy_card</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-01-21 22:45:33</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-01-21 22:45:33</sys_updated_on>
+            <value>5</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

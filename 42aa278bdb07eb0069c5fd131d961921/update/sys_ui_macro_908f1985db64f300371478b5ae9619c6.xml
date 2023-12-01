@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <description/>
+        <media_type/>
+        <name>game_verification</name>
+        <scoped_name>x_orb_jeopardy_game_verification</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-03-30 20:50:23</sys_created_on>
+        <sys_id>908f1985db64f300371478b5ae9619c6</sys_id>
+        <sys_mod_count>55</sys_mod_count>
+        <sys_name>game_verification</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_ui_macro_908f1985db64f300371478b5ae9619c6</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2020-01-03 20:56:06</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<style>
+		.game_task {
+			padding : 5px;
+		}
+		.task_header {
+			font-size:18pt;
+		}
+		.incomplete {
+			color : red;
+		}
+		.complete {
+			color : green;
+		}
+	</style>
+		<g2:evaluate jelly="true">
+			var gameID = jelly.sys_id;
+			var ju = new Util(gameID);
+			
+			var n_categories = ju.hasCorrectNumberOfCategories();
+			var n_cat_class = (n_categories) ? "complete" : "incomplete";
+			
+			var players_complete = ju.checkPlayers();
+			var player_class = (players_complete) ? "complete" : "incomplete";
+			
+			var n_cards_complete = ju.checkTotalNumberOfCards();
+			var n_cards_class = (n_cards_complete) ? "complete" : "incomplete";
+			
+			var n_cards_per_cat_complete = ju.checkProperNumberOfCardsPerCategory();
+			var n_cards_per_cat_class = (n_cards_per_cat_complete) ? "complete" : "incomplete";
+			
+			var cat_difficulty_complete = ju.checkCatDifficulty();
+			var cat_difficulty_class = (cat_difficulty_complete) ? "complete" : "incomplete";
+			
+			var daily_double_complete = ju.checkDailyDouble();
+			var daily_double_class = (daily_double_complete) ? "complete" : "incomplete";
+			
+			var final_jeopardy_complete = ju.checkFinalJeopardy();
+			var final_jeopardy_class = (final_jeopardy_complete) ? "complete" : "incomplete";
+			
+			var cat_order_complete = ju.checkCatOrder();
+			var cat_order_class = (cat_order_complete) ? "complete" : "incomplete";
+			
+			var nCards = ju.gameGr.n_rows * ju.gameGr.n_categories;
+			var totalCards = nCards.toPrecision(2);
+			
+		</g2:evaluate>
+	<table class="game_task_table">
+		<tr>
+			<td class="task_header">Verification</td>
+		</tr>
+		
+		<tr class="game_task $[player_class]">
+			<td>
+				3 players configured:
+			</td>
+			<td>
+				$[player_class]
+			</td>
+		</tr>
+		<tr class="game_task $[n_cat_class]">
+			<td>
+				$[ju.gameGr.n_categories] categories configured:
+			</td>
+			<td>
+				$[n_cat_class]
+			</td>
+		</tr>
+		
+		<tr class="game_task $[cat_order_class]">
+			<td>
+				Category order set:
+			</td>
+			<td>
+				$[cat_order_class]
+			</td>
+		</tr>
+		
+		<tr class="game_task $[n_cards_per_cat_class]">
+			<td>
+				$[ju.gameGr.n_rows] cards per category:
+			</td>
+			<td>
+				$[n_cards_per_cat_class]
+			</td>
+		</tr>
+			
+		<tr class="game_task $[cat_difficulty_class]">
+			<td>
+				Difficulty 1-5 per category:
+			</td>
+			<td>
+				$[cat_difficulty_class]
+			</td>
+		</tr>
+			
+		<tr class="game_task $[n_cards_class]">
+			<td>
+				$[totalCards] cards configured:
+			</td>
+			<td>
+				$[n_cards_class]
+			</td>
+		</tr>
+			
+		<tr class="game_task $[daily_double_class]">
+			<td>
+				2 Daily Double cards set:
+			</td>
+			<td>
+				$[daily_double_class]
+			</td>
+		</tr>
+			
+		<tr class="game_task $[final_jeopardy_class]">
+			<td>
+				1 Final Jeopardy configured:
+			</td>
+			<td>
+				$[final_jeopardy_class]
+			</td>
+		</tr>
+			
+	</table>				
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

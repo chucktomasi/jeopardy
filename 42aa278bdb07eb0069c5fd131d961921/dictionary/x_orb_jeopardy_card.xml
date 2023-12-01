@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="abe7337a973e5d10cf75f7771153afb5" label="Card" max_length="40" name="x_orb_jeopardy_card" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="no_truncate=true" display="true" label="Answer" max_length="200" name="answer" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Category" max_length="32" name="category" reference="x_orb_jeopardy_category" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="1" label="Difficulty" max_length="40" name="difficulty" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="1" sequence="0" value="1"/>
+                <element inactive_on_update="false" label="2" sequence="1" value="2"/>
+                <element inactive_on_update="false" label="3" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="4" sequence="3" value="4"/>
+                <element inactive_on_update="false" label="5" sequence="4" value="5"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element attributes="no_truncate=true" label="Question" max_length="200" name="question" type="string"/>
+        <index name="index">
+            <element name="category"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report_users_groups">
+    <sys_report_users_groups action="INSERT_OR_UPDATE">
+        <group_id/>
+        <report_id display_value="Jeopardy categories &amp; difficulties">e6727b43db47eb0069c5fd131d961984</report_id>
+        <sys_class_name>sys_report_users_groups</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2019-01-21 23:05:41</sys_created_on>
+        <sys_id>6e727b43db47eb0069c5fd131d961984</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>e6727b43db47eb0069c5fd131d961984</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_report_users_groups_6e727b43db47eb0069c5fd131d961984</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2019-01-21 23:05:41</sys_updated_on>
+        <user_id display_value="Chuck Tomasi">46c9e158a9fe198101d44d0d22cb640d</user_id>
+    </sys_report_users_groups>
+</record_update>

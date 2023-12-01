@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rte_eb_etl_field">
+    <sys_rte_eb_etl_field action="INSERT_OR_UPDATE">
+        <coalesce>false</coalesce>
+        <coercion_action>create</coercion_action>
+        <field>u_answer</field>
+        <name>Answer</name>
+        <sys_class_name>sys_rte_eb_etl_field</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2022-03-30 23:28:57</sys_created_on>
+        <sys_id>6062def51ba601102e4d4156bc4bcb46</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Answer</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_rte_eb_definition display_value="Jeopardy Q&amp;A_etl_ihub">5862def51ba601102e4d4156bc4bcb21</sys_rte_eb_definition>
+        <sys_rte_eb_entity display_value="Source_x_orb_jeopardy_ihub_import_79321e751ba601102e4d4156bc4bcb2b">e062def51ba601102e4d4156bc4bcb27</sys_rte_eb_entity>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_rte_eb_etl_field_6062def51ba601102e4d4156bc4bcb46</sys_update_name>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2022-03-30 23:28:57</sys_updated_on>
+    </sys_rte_eb_etl_field>
+</record_update>

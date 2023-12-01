@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="490a38e8db73af00371478b5ae96191a" sys_domain="global" table="x_orb_jeopardy_m2m_game_player" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>player</element>
+            <position>0</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>75658a311b7ea0102e4d4156bc4bcbfc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>game</element>
+            <position>1</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>f9658a311b7ea0102e4d4156bc4bcbfc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>amount</element>
+            <position>2</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>71658a311b7ea0102e4d4156bc4bcbfd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>f5658a311b7ea0102e4d4156bc4bcbfd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <position>4</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>7d658a311b7ea0102e4d4156bc4bcbfd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>order</element>
+            <position>5</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>f1658a311b7ea0102e4d4156bc4bcbfe</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>control</element>
+            <position>6</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>79658a311b7ea0102e4d4156bc4bcbfe</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>winner</element>
+            <position>7</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>fd658a311b7ea0102e4d4156bc4bcbfe</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>8</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>75658a311b7ea0102e4d4156bc4bcbff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>url</element>
+            <position>9</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 16:25:38</sys_created_on>
+            <sys_id>f9658a311b7ea0102e4d4156bc4bcbff</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 16:25:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>short_link</element>
+            <position>10</position>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2021-03-10 18:05:04</sys_created_on>
+            <sys_id>062c56311bbea0102e4d4156bc4bcb6f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_orb_jeopardy_m2m_game_player" sys_domain="global" view="Default view">490a38e8db73af00371478b5ae96191a</sys_ui_section>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2021-03-10 18:05:04</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_orb_jeopardy_m2m_game_player</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>chuck.tomasi</sys_created_by>
+            <sys_created_on>2019-02-19 22:02:03</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>490a38e8db73af00371478b5ae96191a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_orb_jeopardy_m2m_game_player</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+            <sys_update_name>sys_ui_section_490a38e8db73af00371478b5ae96191a</sys_update_name>
+            <sys_updated_by>chuck.tomasi</sys_updated_by>
+            <sys_updated_on>2019-02-19 22:02:03</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>
