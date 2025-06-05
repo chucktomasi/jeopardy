@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="76e7337a973e5d10cf75f7771153af6b" label="Game" max_length="40" name="x_orb_jeopardy_game" type="collection">
         <element attributes="edge_encryption_enabled=true" label="Active card" max_length="1000" name="active_card" read_only="true" type="simple_name_values"/>
-        <element label="Current" max_length="40" name="current" type="boolean"/>
-        <element label="Date" max_length="40" name="date" type="glide_date"/>
-        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Final Jeopardy" max_length="32" name="final_jeopardy" reference="x_orb_jeopardy_card" reference_qual="javascript:new Util(current).finalJeopardyRefQual();" type="reference" use_reference_qualifier="advanced"/>
-        <element attributes="edge_encryption_enabled=true" display="true" label="Name" max_length="40" name="name" type="string"/>
-        <element attributes="edge_encryption_enabled=true" label="Number of categories" mandatory="true" max_length="6" name="n_categories" type="integer"/>
-        <element attributes="edge_encryption_enabled=true" label="Number of rows" mandatory="true" max_length="5" name="n_rows" type="integer"/>
         <element attributes="edge_encryption_enabled=true" choice="3" default="pending" label="State" max_length="40" name="state" type="choice">
             <choice>
-                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
+                <element inactive_on_update="false" label="Complete" sequence="3" value="complete"/>
                 <element inactive_on_update="false" label="Playing" sequence="1" value="playing"/>
                 <element inactive_on_update="false" label="Final Jeopardy" sequence="2" value="final_jeopardy"/>
-                <element inactive_on_update="false" label="Complete" sequence="3" value="complete"/>
+                <element inactive_on_update="false" label="Pending" sequence="0" value="pending"/>
             </choice>
         </element>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Name" max_length="40" name="name" type="string"/>
         <element attributes="edge_encryption_enabled=true" choice="1" default="jeopardy" label="Type" max_length="40" name="type" type="string">
             <choice>
-                <element inactive_on_update="false" label="Jeopardy" sequence="0" value="jeopardy"/>
                 <element inactive_on_update="false" label="Double jeopardy" sequence="1" value="double jeopardy"/>
+                <element inactive_on_update="false" label="Jeopardy" sequence="0" value="jeopardy"/>
             </choice>
         </element>
+        <element label="Current" max_length="40" name="current" type="boolean"/>
+        <element label="Date" max_length="40" name="date" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true" label="Number of categories" mandatory="true" max_length="6" name="n_categories" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Final Jeopardy" max_length="32" name="final_jeopardy" reference="x_orb_jeopardy_card" reference_qual="javascript:new Util(current).finalJeopardyRefQual();" type="reference" use_reference_qualifier="advanced"/>
+        <element attributes="edge_encryption_enabled=true" label="Number of rows" mandatory="true" max_length="5" name="n_rows" type="integer"/>
         <index name="index">
             <element name="final_jeopardy"/>
         </index>

@@ -17,6 +17,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>sys_report_template.do?jvar_report_id=e6727b43db47eb0069c5fd131d961984&amp;jvar_selected_tab=myReports&amp;jvar_list_order_by=&amp;jvar_list_sort_direction=&amp;sysparm_reportquery=&amp;jvar_search_created_by=&amp;jvar_search_table=&amp;jvar_search_report_sys_id=&amp;jvar_report_home_query=</query>
         <report/>
+        <require_confirmation>false</require_confirmation>
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>

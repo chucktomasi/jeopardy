@@ -3,7 +3,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>answer</element>
-            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="9eae257297221110cf75f7771153af9d">fef53ed277103300086edada7810614a</list_id>
+            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="71782050db2200102a689ee6db9619d3">fef53ed277103300086edada7810614a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -18,7 +18,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>category</element>
-            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="9eae257297221110cf75f7771153af9d">fef53ed277103300086edada7810614a</list_id>
+            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="71782050db2200102a689ee6db9619d3">fef53ed277103300086edada7810614a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
@@ -33,7 +33,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>difficulty</element>
-            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="9eae257297221110cf75f7771153af9d">fef53ed277103300086edada7810614a</list_id>
+            <list_id display_value="x_orb_jeopardy_card" element="NULL" name="x_orb_jeopardy_card" parent="NULL" relationship="NULL" sys_domain="global" view="71782050db2200102a689ee6db9619d3">fef53ed277103300086edada7810614a</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
@@ -70,7 +70,7 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2019-03-22 14:04:25</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">9eae257297221110cf75f7771153af9d</view>
+            <view display_value="Reference List" name="sys_ref_list">71782050db2200102a689ee6db9619d3</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>

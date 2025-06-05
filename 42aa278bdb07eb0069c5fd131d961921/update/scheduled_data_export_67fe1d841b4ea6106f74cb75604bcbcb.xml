@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="scheduled_data_export">
+    <scheduled_data_export action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <delta_on_or_after>sys_updated_on</delta_on_or_after>
+        <enable_delta_export>false</enable_delta_export>
+        <entered_time/>
+        <export_set display_value="Jeopardy Cards">45de15841b4ea6106f74cb75604bcb25</export_set>
+        <last_export_run>2025-06-05 13:55:13</last_export_run>
+        <max_drift/>
+        <name>Jeopardy Cards</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <order/>
+        <parent/>
+        <post_script/>
+        <post_script_bool>false</post_script_bool>
+        <pre_script/>
+        <pre_script_bool>false</pre_script_bool>
+        <run_as display_value="Chuck Tomasi">46c9e158a9fe198101d44d0d22cb640d</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2025-06-05 13:50:36</run_start>
+        <run_time>1970-01-01 09:00:00</run_time>
+        <run_type>daily</run_type>
+        <sys_class_name>scheduled_data_export</sys_class_name>
+        <sys_created_by>chuck.tomasi@gmail.com</sys_created_by>
+        <sys_created_on>2025-06-05 13:50:48</sys_created_on>
+        <sys_id>67fe1d841b4ea6106f74cb75604bcbcb</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Jeopardy Cards</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>scheduled_data_export_67fe1d841b4ea6106f74cb75604bcbcb</sys_update_name>
+        <sys_updated_by>chuck.tomasi@gmail.com</sys_updated_by>
+        <sys_updated_on>2025-06-05 13:55:13</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </scheduled_data_export>
+</record_update>

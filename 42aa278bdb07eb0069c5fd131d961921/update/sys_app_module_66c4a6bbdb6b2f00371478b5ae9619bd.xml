@@ -17,6 +17,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query>/jeopardy?id=j_home</query>
         <report/>
+        <require_confirmation>false</require_confirmation>
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>

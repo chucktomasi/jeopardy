@@ -5,14 +5,19 @@
         <active>false</active>
         <annotation/>
         <attributes/>
+        <authored_on_release_version/>
         <callable_by_client_api>false</callable_by_client_api>
         <category/>
         <copied_from/>
         <copied_from_name/>
         <description>If the URL changes, we need to create a new bit.ly link.</description>
+        <display_name_after_preview/>
+        <flow_priority/>
+        <generation_source/>
         <internal_name>createupdate_game_player_short_link</internal_name>
         <label_cache>[{"name":"b7228c35-10ae-44a2-883c-0b6b3ec2590c.response.link","label":"1➛Response➛link","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","attributes":{}},{"name":"Created or Updated_1.current","label":"Trigger➛Game Player Record","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"reference","base_type":"reference","attributes":{}},{"name":"7dde5ec7-8ac9-4109-824b-6e51ef695890.table_name","label":"2➛Game Player Table","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"7dde5ec7-8ac9-4109-824b-6e51ef695890.record","label":"2➛Game Player Record","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.error_message","label":"2➛Error Message","reference_display":"Error Message","type":"string","base_type":"string","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.status","label":"2➛Status","reference_display":"Status","type":"choice","base_type":"choice","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"choice"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.table_name","label":"2➛Table","reference_display":"Table","type":"table_name","base_type":"table_name","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"table_name"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.record","label":"2➛Record","reference_display":"Record","type":"document_id","base_type":"document_id","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"document_id"}},{"name":"Created or Updated_1.current.url","label":"Trigger➛Game Player Record➛URL","reference":"","reference_display":"URL","type":"url","base_type":"url","parent_table_name":"x_orb_jeopardy_m2m_game_player","column_name":"url"},{"name":"b7228c35-10ae-44a2-883c-0b6b3ec2590c.response","label":"1➛Response","reference_display":"Response","type":"object","base_type":"object","attributes":{"sourceId":"fdf94565-8889-43ce-ab19-b2b4c8a0ac67","uiTypeLabel":"Object","co_type_name":"FDf4fe57c193cde810eb0ea474460eeccd","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"1f58cd0e-324d-4bbb-8081-8e073ff32a20","uiType":"object","uiUniqueId":"8e6b7488-e920-4c68-b8ce-59cc7bb327d5"}}]</label_cache>
         <master_snapshot>7b0d56711bbea0102e4d4156bc4bcb3e</master_snapshot>
+        <master_snapshot_digest/>
         <name>Create/update game player short link</name>
         <natlang/>
         <outputs/>
@@ -24,6 +29,7 @@
         <show_draft_actions>false</show_draft_actions>
         <show_triggered_flows>false</show_triggered_flows>
         <status>published</status>
+        <substatus/>
         <sys_class_name>sys_hub_flow</sys_class_name>
         <sys_created_by>chuck.tomasi</sys_created_by>
         <sys_created_on>2021-03-10 18:06:26</sys_created_on>
@@ -37,9 +43,10 @@
         <sys_policy/>
         <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
         <sys_update_name>sys_hub_flow_ca7c96311bbea0102e4d4156bc4bcbbd</sys_update_name>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2022-11-05 17:13:49</sys_updated_on>
+        <sys_updated_by>chuck.tomasi@gmail.com</sys_updated_by>
+        <sys_updated_on>2025-06-04 17:05:20</sys_updated_on>
         <type>flow</type>
+        <version/>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_variable_value action="delete_multiple" query="document_key=ca7c96311bbea0102e4d4156bc4bcbbd"/>
@@ -93,69 +100,6 @@
         <sys_id>bd9d12b11bbea0102e4d4156bc4bcbb0</sys_id>
     </sys_json_chunk>
     <sys_trigger_runner_mapping action="delete_multiple" query="identifier=ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN3d9d12b11bbea0102e4d4156bc4bcbb0"/>
-    <sys_hub_trigger_instance action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN420dd2711bbea0102e4d4156bc4bcb98"/>
-    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
-        <comment/>
-        <display_text/>
-        <flow display_value="Create/update game player short link">ca7c96311bbea0102e4d4156bc4bcbbd</flow>
-        <name>Created or Updated</name>
-        <remote_sys_id/>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
-        <sys_id>420dd2711bbea0102e4d4156bc4bcb98</sys_id>
-        <sys_mod_count>6</sys_mod_count>
-        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:11:20</sys_updated_on>
-        <trigger_definition display_value="Created or Updated">a45d9180c32222002841b63b12d3aea7</trigger_definition>
-        <trigger_inputs/>
-        <trigger_outputs/>
-        <trigger_type>record_create_or_update</trigger_type>
-    </sys_hub_trigger_instance>
-    <sys_variable_value action="delete_multiple" query="document_key=420dd2711bbea0102e4d4156bc4bcb98"/>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
-        <order>100</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
-        <sys_id>060dd2711bbea0102e4d4156bc4bcb99</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:08:53</sys_updated_on>
-        <value>urlVALCHANGES</value>
-        <variable display_value="Condition">707dd180c32222002841b63b12d3aecb</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
-        <order>1</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
-        <sys_id>c60dd2711bbea0102e4d4156bc4bcb99</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:08:53</sys_updated_on>
-        <value>x_orb_jeopardy_m2m_game_player</value>
-        <variable display_value="Table">cf1e1980c32222002841b63b12d3aea0</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
-        <order>200</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:10:56</sys_created_on>
-        <sys_id>d88d5e711bbea0102e4d4156bc4bcb49</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:10:56</sys_updated_on>
-        <value>every</value>
-        <variable display_value="Run Trigger">2b9def50c31132002841b63b12d3ae5b</variable>
-    </sys_variable_value>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_trigger_output_a45d9180c32222002841b63b12d3aea7^id=420dd2711bbea0102e4d4156bc4bcb98"/>
     <sys_hub_flow_stage action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_flow_cat_variable_model action="delete_multiple" query="id=ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN027c96311bbea0102e4d4156bc4bcbc0"/>
     <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
@@ -255,6 +199,29 @@
         <xml_view>false</xml_view>
     </sys_hub_flow_input>
     <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=7d0dd2711bbea0102e4d4156bc4bcb83"/>
+    <sys_complex_object action="INSERT_OR_UPDATE">
+        <label/>
+        <name>FDc19dde71f6bea0103d4dd7f3b0f17fec</name>
+        <namespace>FlowDesigner</namespace>
+        <scope_name>42aa278bdb07eb0069c5fd131d961921</scope_name>
+        <serialized_content>{"FlowDesigner:FDc19dde71f6bea0103d4dd7f3b0f17fec":{"$COCollectionField":[{"FDChangeDetails":{"previous_display_value":"String","previous_display_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Previous Display Value\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\"}"},"previous_value":"String","previous_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Previous Value\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\"}"},"current_display_value":"String","current_display_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Current Display Value\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\"}"},"current_value":"String","current_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Current Value\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\"}"},"field_name":"String","field_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Field Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"pwd2droppable\":\"true\",\"default_value\":\"\",\"label\":\"Changed Fields\",\"mandatory\":\"false\",\"child_name\":\"FDChangeDetails\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDc19dde71f6bea0103d4dd7f3b0f17fec\",\"child_label\":\"FDChangeDetails\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"100\",\"max_length\":\"4000\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FDc19dde71f6bea0103d4dd7f3b0f17fec.$type_facets":{"SimpleMapFacet":"{\"pwd2droppable\":\"true\",\"default_value\":\"\",\"label\":\"Changed Fields\",\"mandatory\":\"false\",\"child_name\":\"FDChangeDetails\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDc19dde71f6bea0103d4dd7f3b0f17fec\",\"child_label\":\"FDChangeDetails\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"100\",\"max_length\":\"4000\"}"}}</serialized_content>
+        <sys_class_name>sys_complex_object</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:11:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>859dde711bbea0102e4d4156bc4bcbec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:11:17</sys_updated_on>
+        <type>complex_object_collection</type>
+    </sys_complex_object>
     <sys_hub_flow_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -425,6 +392,69 @@
     <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=f50dd2711bbea0102e4d4156bc4bcb90"/>
     <sys_hub_flow_output action="delete_multiple" query="model=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=ca7c96311bbea0102e4d4156bc4bcbbd"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN420dd2711bbea0102e4d4156bc4bcb98"/>
+    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Create/update game player short link">ca7c96311bbea0102e4d4156bc4bcbbd</flow>
+        <name>Created or Updated</name>
+        <remote_sys_id/>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
+        <sys_id>420dd2711bbea0102e4d4156bc4bcb98</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:11:20</sys_updated_on>
+        <trigger_definition display_value="Created or Updated">a45d9180c32222002841b63b12d3aea7</trigger_definition>
+        <trigger_inputs/>
+        <trigger_outputs/>
+        <trigger_type>record_create_or_update</trigger_type>
+    </sys_hub_trigger_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=420dd2711bbea0102e4d4156bc4bcb98"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
+        <sys_id>060dd2711bbea0102e4d4156bc4bcb99</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:08:53</sys_updated_on>
+        <value>urlVALCHANGES</value>
+        <variable display_value="Condition">707dd180c32222002841b63b12d3aecb</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:08:53</sys_created_on>
+        <sys_id>c60dd2711bbea0102e4d4156bc4bcb99</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:08:53</sys_updated_on>
+        <value>x_orb_jeopardy_m2m_game_player</value>
+        <variable display_value="Table">cf1e1980c32222002841b63b12d3aea0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>420dd2711bbea0102e4d4156bc4bcb98</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:10:56</sys_created_on>
+        <sys_id>d88d5e711bbea0102e4d4156bc4bcb49</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:10:56</sys_updated_on>
+        <value>every</value>
+        <variable display_value="Run Trigger">2b9def50c31132002841b63b12d3ae5b</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_trigger_output_a45d9180c32222002841b63b12d3aea7^id=420dd2711bbea0102e4d4156bc4bcb98"/>
     <sys_hub_action_instance action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN4e0dd2711bbea0102e4d4156bc4bcba8,ce0dd2711bbea0102e4d4156bc4bcbae"/>
     <sys_hub_action_instance action="INSERT_OR_UPDATE">
         <action_inputs/>
@@ -434,6 +464,7 @@
         <comment/>
         <display_text/>
         <flow display_value="Create/update game player short link">ca7c96311bbea0102e4d4156bc4bcbbd</flow>
+        <generation_source/>
         <order>1</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
@@ -458,6 +489,7 @@
         <comment/>
         <display_text/>
         <flow display_value="Create/update game player short link">ca7c96311bbea0102e4d4156bc4bcbbd</flow>
+        <generation_source/>
         <order>2</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
@@ -524,8 +556,8 @@
     </sys_element_mapping>
     <sys_hub_input_scripts action="delete_multiple" query="instance=ce0dd2711bbea0102e4d4156bc4bcbae"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=ce0dd2711bbea0102e4d4156bc4bcbae"/>
-    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_hub_flow_logic action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=ca7c96311bbea0102e4d4156bc4bcbbd"/>
     <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_ca7c96311bbea0102e4d4156bc4bcbbd^sys_idNOT IN310dd2711bbea0102e4d4156bc4bcb89,310dd2711bbea0102e4d4156bc4bcb8f,ca0dd2711bbea0102e4d4156bc4bcb94"/>
@@ -607,11 +639,13 @@
         <active>true</active>
         <annotation/>
         <attributes/>
+        <authored_on_release_version/>
         <callable_by_client_api>false</callable_by_client_api>
         <category/>
         <copied_from/>
         <copied_from_name/>
         <description>If the URL changes, we need to create a new bit.ly link.</description>
+        <flow_priority/>
         <internal_name>createupdate_game_player_short_link</internal_name>
         <label_cache>[{"name":"b7228c35-10ae-44a2-883c-0b6b3ec2590c.response.link","label":"1➛Response➛link","reference":"","reference_display":"","type":"string","base_type":"string","column_name":"","attributes":{}},{"name":"Created or Updated_1.current","label":"Trigger➛Game Player Record","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"reference","base_type":"reference","attributes":{}},{"name":"7dde5ec7-8ac9-4109-824b-6e51ef695890.table_name","label":"2➛Game Player Table","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"7dde5ec7-8ac9-4109-824b-6e51ef695890.record","label":"2➛Game Player Record","reference":"x_orb_jeopardy_m2m_game_player","reference_display":"Game Player","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.error_message","label":"2➛Error Message","reference_display":"Error Message","type":"string","base_type":"string","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.status","label":"2➛Status","reference_display":"Status","type":"choice","base_type":"choice","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"choice"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.table_name","label":"2➛Table","reference_display":"Table","type":"table_name","base_type":"table_name","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"table_name"}},{"name":"9f6ac95e-6084-4ea6-8b3d-0fef9c4ce7a9.record","label":"2➛Record","reference_display":"Record","type":"document_id","base_type":"document_id","attributes":{"uiTypeLabel":"true","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"document_id"}},{"name":"Created or Updated_1.current.url","label":"Trigger➛Game Player Record➛URL","reference":"","reference_display":"URL","type":"url","base_type":"url","parent_table_name":"x_orb_jeopardy_m2m_game_player","column_name":"url"},{"name":"b7228c35-10ae-44a2-883c-0b6b3ec2590c.response","label":"1➛Response","reference_display":"Response","type":"object","base_type":"object","attributes":{"sourceId":"fdf94565-8889-43ce-ab19-b2b4c8a0ac67","uiTypeLabel":"Object","co_type_name":"FDf4fe57c193cde810eb0ea474460eeccd","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","sourceType":"step","sourceUiUniqueId":"1f58cd0e-324d-4bbb-8081-8e073ff32a20","uiType":"object","uiUniqueId":"8e6b7488-e920-4c68-b8ce-59cc7bb327d5"}}]</label_cache>
         <master>true</master>
@@ -640,72 +674,10 @@
         <sys_updated_by>chuck.tomasi</sys_updated_by>
         <sys_updated_on>2021-03-10 18:11:17</sys_updated_on>
         <type>flow</type>
+        <version/>
     </sys_hub_flow_snapshot>
     <sys_translated_text action="delete_multiple" query="documentkey=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_variable_value action="delete_multiple" query="document_key=7b0d56711bbea0102e4d4156bc4bcb3e"/>
-    <sys_hub_trigger_instance action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN141d56711bbea0102e4d4156bc4bcbc6"/>
-    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
-        <comment/>
-        <display_text/>
-        <flow display_value="Create/update game player short link">7b0d56711bbea0102e4d4156bc4bcb3e</flow>
-        <name>Created or Updated</name>
-        <remote_sys_id/>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
-        <sys_id>141d56711bbea0102e4d4156bc4bcbc6</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:11:19</sys_updated_on>
-        <trigger_definition display_value="Created or Updated">a45d9180c32222002841b63b12d3aea7</trigger_definition>
-        <trigger_inputs/>
-        <trigger_outputs/>
-        <trigger_type>record_create_or_update</trigger_type>
-    </sys_hub_trigger_instance>
-    <sys_variable_value action="delete_multiple" query="document_key=141d56711bbea0102e4d4156bc4bcbc6"/>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
-        <order>1</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
-        <sys_id>9c1d56711bbea0102e4d4156bc4bcbc7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:09:02</sys_updated_on>
-        <value>x_orb_jeopardy_m2m_game_player</value>
-        <variable display_value="Table">cf1e1980c32222002841b63b12d3aea0</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
-        <order>200</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:11:16</sys_created_on>
-        <sys_id>c59dde711bbea0102e4d4156bc4bcbce</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:11:16</sys_updated_on>
-        <value>every</value>
-        <variable display_value="Run Trigger">2b9def50c31132002841b63b12d3ae5b</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_hub_trigger_instance</document>
-        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
-        <order>100</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>chuck.tomasi</sys_created_by>
-        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
-        <sys_id>d81d56711bbea0102e4d4156bc4bcbc7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>chuck.tomasi</sys_updated_by>
-        <sys_updated_on>2021-03-10 18:09:02</sys_updated_on>
-        <value>urlVALCHANGES</value>
-        <variable display_value="Condition">707dd180c32222002841b63b12d3aecb</variable>
-    </sys_variable_value>
-    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_trigger_output_a45d9180c32222002841b63b12d3aea7^id=141d56711bbea0102e4d4156bc4bcbc6"/>
     <sys_hub_flow_stage action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_flow_cat_variable_model action="delete_multiple" query="id=7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN881d56711bbea0102e4d4156bc4bcb3f"/>
     <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
@@ -721,6 +693,29 @@
     </sys_flow_cat_variable_model>
     <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=881d56711bbea0102e4d4156bc4bcb3f"/>
     <sys_hub_flow_input action="delete_multiple" query="model=7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN441d56711bbea0102e4d4156bc4bcb85,441d56711bbea0102e4d4156bc4bcb9c,c01d56711bbea0102e4d4156bc4bcb68"/>
+    <sys_complex_object action="INSERT_OR_UPDATE">
+        <label/>
+        <name>FDc19dde71f6bea0103d4dd7f3b0f17fec</name>
+        <namespace>FlowDesigner</namespace>
+        <scope_name>42aa278bdb07eb0069c5fd131d961921</scope_name>
+        <serialized_content>{"FlowDesigner:FDc19dde71f6bea0103d4dd7f3b0f17fec":{"$COCollectionField":[{"FDChangeDetails":{"previous_display_value":"String","previous_display_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Previous Display Value\",\"mandatory\":\"false\",\"order\":\"4\",\"max_length\":\"0\"}"},"previous_value":"String","previous_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Previous Value\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"0\"}"},"current_display_value":"String","current_display_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Current Display Value\",\"mandatory\":\"false\",\"order\":\"5\",\"max_length\":\"0\"}"},"current_value":"String","current_value.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Current Value\",\"mandatory\":\"false\",\"order\":\"3\",\"max_length\":\"0\"}"},"field_name":"String","field_name.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Field Name\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"0\"}"}}}],"$COCollectionField.$type_facets":{"SimpleMapFacet":"{\"pwd2droppable\":\"true\",\"default_value\":\"\",\"label\":\"Changed Fields\",\"mandatory\":\"false\",\"child_name\":\"FDChangeDetails\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDc19dde71f6bea0103d4dd7f3b0f17fec\",\"child_label\":\"FDChangeDetails\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"100\",\"max_length\":\"4000\"}"},"$COCollectionField.$field_facets":{"SimpleMapFacet":"{\"up-shift-collection-level\":\"true\"}"}},"FlowDesigner:FDc19dde71f6bea0103d4dd7f3b0f17fec.$type_facets":{"SimpleMapFacet":"{\"pwd2droppable\":\"true\",\"default_value\":\"\",\"label\":\"Changed Fields\",\"mandatory\":\"false\",\"child_name\":\"FDChangeDetails\",\"uiTypeLabel\":\"Array.Object\",\"co_type_name\":\"FDc19dde71f6bea0103d4dd7f3b0f17fec\",\"child_label\":\"FDChangeDetails\",\"child_type_label\":\"Object\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"array.object\",\"child_type\":\"object\",\"order\":\"100\",\"max_length\":\"4000\"}"}}</serialized_content>
+        <sys_class_name>sys_complex_object</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:11:17</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>859dde711bbea0102e4d4156bc4bcbec</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:11:17</sys_updated_on>
+        <type>complex_object_collection</type>
+    </sys_complex_object>
     <sys_hub_flow_input action="INSERT_OR_UPDATE">
         <active>true</active>
         <array>false</array>
@@ -975,6 +970,69 @@
     <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=c01d56711bbea0102e4d4156bc4bcb68"/>
     <sys_hub_flow_output action="delete_multiple" query="model=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=7b0d56711bbea0102e4d4156bc4bcb3e"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN141d56711bbea0102e4d4156bc4bcbc6"/>
+    <sys_hub_trigger_instance action="INSERT_OR_UPDATE">
+        <comment/>
+        <display_text/>
+        <flow display_value="Create/update game player short link">7b0d56711bbea0102e4d4156bc4bcb3e</flow>
+        <name>Created or Updated</name>
+        <remote_sys_id/>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
+        <sys_id>141d56711bbea0102e4d4156bc4bcbc6</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:11:19</sys_updated_on>
+        <trigger_definition display_value="Created or Updated">a45d9180c32222002841b63b12d3aea7</trigger_definition>
+        <trigger_inputs/>
+        <trigger_outputs/>
+        <trigger_type>record_create_or_update</trigger_type>
+    </sys_hub_trigger_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=141d56711bbea0102e4d4156bc4bcbc6"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
+        <sys_id>9c1d56711bbea0102e4d4156bc4bcbc7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:09:02</sys_updated_on>
+        <value>x_orb_jeopardy_m2m_game_player</value>
+        <variable display_value="Table">cf1e1980c32222002841b63b12d3aea0</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:11:16</sys_created_on>
+        <sys_id>c59dde711bbea0102e4d4156bc4bcbce</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:11:16</sys_updated_on>
+        <value>every</value>
+        <variable display_value="Run Trigger">2b9def50c31132002841b63b12d3ae5b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_trigger_instance</document>
+        <document_key>141d56711bbea0102e4d4156bc4bcbc6</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>chuck.tomasi</sys_created_by>
+        <sys_created_on>2021-03-10 18:09:02</sys_created_on>
+        <sys_id>d81d56711bbea0102e4d4156bc4bcbc7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>chuck.tomasi</sys_updated_by>
+        <sys_updated_on>2021-03-10 18:09:02</sys_updated_on>
+        <value>urlVALCHANGES</value>
+        <variable display_value="Condition">707dd180c32222002841b63b12d3aecb</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_trigger_output_a45d9180c32222002841b63b12d3aea7^id=141d56711bbea0102e4d4156bc4bcbc6"/>
     <sys_hub_action_instance action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN801d56711bbea0102e4d4156bc4bcbbe,d41d56711bbea0102e4d4156bc4bcbc4"/>
     <sys_hub_action_instance action="INSERT_OR_UPDATE">
         <action_inputs/>
@@ -984,6 +1042,7 @@
         <comment/>
         <display_text/>
         <flow display_value="Create/update game player short link">7b0d56711bbea0102e4d4156bc4bcb3e</flow>
+        <generation_source/>
         <order>1</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
@@ -1008,6 +1067,7 @@
         <comment/>
         <display_text/>
         <flow display_value="Create/update game player short link">7b0d56711bbea0102e4d4156bc4bcb3e</flow>
+        <generation_source/>
         <order>2</order>
         <parent_ui_id/>
         <sys_class_name>sys_hub_action_instance</sys_class_name>
@@ -1074,8 +1134,8 @@
     </sys_element_mapping>
     <sys_hub_input_scripts action="delete_multiple" query="instance=d41d56711bbea0102e4d4156bc4bcbc4"/>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=d41d56711bbea0102e4d4156bc4bcbc4"/>
-    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_hub_flow_logic action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=7b0d56711bbea0102e4d4156bc4bcb3e"/>
     <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_7b0d56711bbea0102e4d4156bc4bcb3e^sys_idNOT IN041d56711bbea0102e4d4156bc4bcb81,481d56711bbea0102e4d4156bc4bcba2,4c1d56711bbea0102e4d4156bc4bcb8b"/>

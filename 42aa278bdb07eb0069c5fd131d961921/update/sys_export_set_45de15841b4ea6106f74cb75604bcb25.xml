@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_export_set">
+    <sys_export_set action="INSERT_OR_UPDATE">
+        <append_timestamp>false</append_timestamp>
+        <export_definition display_value="Jeopardy Cards">f3af51481b4ea6106f74cb75604bcb73</export_definition>
+        <export_target display_value="Jeopardy">80cd99041b4ea6106f74cb75604bcbc9</export_target>
+        <file_name>jeopardy_cards.xml</file_name>
+        <format>XML</format>
+        <max_rows/>
+        <name>Jeopardy Cards</name>
+        <sys_class_name>sys_export_set</sys_class_name>
+        <sys_created_by>chuck.tomasi@gmail.com</sys_created_by>
+        <sys_created_on>2025-06-05 13:50:05</sys_created_on>
+        <sys_id>45de15841b4ea6106f74cb75604bcb25</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Jeopardy Cards</sys_name>
+        <sys_package display_value="Jeopardy" source="x_orb_jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Jeopardy">42aa278bdb07eb0069c5fd131d961921</sys_scope>
+        <sys_update_name>sys_export_set_45de15841b4ea6106f74cb75604bcb25</sys_update_name>
+        <sys_updated_by>chuck.tomasi@gmail.com</sys_updated_by>
+        <sys_updated_on>2025-06-05 13:54:57</sys_updated_on>
+        <use_display_value>false</use_display_value>
+        <use_label>false</use_label>
+    </sys_export_set>
+</record_update>

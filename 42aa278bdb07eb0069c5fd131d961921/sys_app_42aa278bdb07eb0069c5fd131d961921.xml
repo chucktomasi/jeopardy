@@ -16,6 +16,7 @@
         <logo/>
         <menu display_value="Jeopardy">82aaa38bdb07eb0069c5fd131d9619e5</menu>
         <name>Jeopardy</name>
+        <package_json/>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>
@@ -42,5 +43,4 @@
         <vendor_prefix/>
         <version>2.0.4</version>
     </sys_app>
-    <sys_translated_text action="delete_multiple" query="documentkey=42aa278bdb07eb0069c5fd131d961921"/>
 </record_update>

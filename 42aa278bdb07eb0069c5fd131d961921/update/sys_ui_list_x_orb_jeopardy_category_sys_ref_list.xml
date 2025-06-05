@@ -3,7 +3,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>name</element>
-            <list_id display_value="x_orb_jeopardy_category" element="NULL" name="x_orb_jeopardy_category" parent="NULL" relationship="NULL" sys_domain="global" view="9eae257297221110cf75f7771153af9d">142473c3db47eb0069c5fd131d961926</list_id>
+            <list_id display_value="x_orb_jeopardy_category" element="NULL" name="x_orb_jeopardy_category" parent="NULL" relationship="NULL" sys_domain="global" view="71782050db2200102a689ee6db9619d3">142473c3db47eb0069c5fd131d961926</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -40,7 +40,7 @@
             <sys_updated_by>chuck.tomasi</sys_updated_by>
             <sys_updated_on>2019-01-21 23:12:54</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">9eae257297221110cf75f7771153af9d</view>
+            <view display_value="Reference List" name="sys_ref_list">71782050db2200102a689ee6db9619d3</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>
